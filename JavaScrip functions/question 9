@@ -1,0 +1,16 @@
+##  Write a JavaScript function which accepts an argument and returns the type.  
+Note : There are six possible values that typeof returns: object, boolean, function, 
+number, string, and undefined.
+
+//function which accept as an arguments and return the type.
+function getType(value) {
+    return typeof value;
+}
+
+// Example usage:
+document.write(getType(5)); 
+document.write(getType("Hello"));
+document.write(getType(true)); 
+document.write(getType({}));
+document.write(getType(function() {}));
+document.write(getType(undefined));
