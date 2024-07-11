@@ -187,9 +187,8 @@ if (guessNumber === randomNumber) {
 }
 
 #### Write a JavaScript program to calculate multiplication and division of two numbers (input from user).
-Sample form :
 
-
+// javascript program to calculate multiplication and division
 <!DOCTYPE html>
 <html lang="en">
 <head>
