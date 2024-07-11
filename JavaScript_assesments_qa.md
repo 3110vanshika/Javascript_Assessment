@@ -40,6 +40,8 @@ if(hour === 0 &&  prepand === "AM"){
 document.write("Today is : " + dayList[day] + "<br>");
 document.write("Current time is : " + hour + prepand + "&nbsp" + ":" + "&nbsp" + minute + "&nbsp" + ":" + "&nbsp" + second);
 
+```
+
 #### Write a JavaScript program to print the contents of the current window
 
 // Create a new button element
