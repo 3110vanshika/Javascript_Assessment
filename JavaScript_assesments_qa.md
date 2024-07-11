@@ -213,8 +213,12 @@ daysUntilChristmas();
     </form>
 
     <div id="result"></div>
+</body>
+<script src="./srcipt.js"></script>
+</html>
+```
+###### Script.js
 ```JavaScript
-    <script>
         function calculate(operation) {
             // Get input values
             const num1 = parseInt(document.getElementById('num1').value);
@@ -234,10 +238,6 @@ daysUntilChristmas();
                 <p>${operation.charAt(0).toUpperCase() + operation.slice(1)}: ${num1} ${operation === 'multiply' ? '*' : '/'} ${num2} = ${result}</p>
             `;
         }
-    </script>
-```
-</body>
-</html>
 ```
 
 #### Write a JavaScript program to convert temperatures to and from celsius, fahrenheit. [ Formula : c/5 = (f-32)/9 [ where c = temperature in celsius and f = temperature in fahrenheit ] 
