@@ -1,0 +1,37 @@
+## Write a JavaScript program to calculate days left until next Christmas.
+
+function daysUntilChristmas() {
+    // Get today's date
+    const today = new Date();
+
+    // Get the current year
+    const currentYear = today.getFullYear();
+
+    // Christmas date for this year and next year
+    const christmasThisYear = new Date(currentYear, 11, 25); // December is month 11 (0-indexed)
+    const christmasNextYear = new Date(currentYear + 1, 11, 25);
+
+    // Calculate time difference in milliseconds
+    const diffThisYear = christmasThisYear.getTime() - today.getTime();
+    const diffNextYear = christmasNextYear.getTime() - today.getTime();
+
+    // Convert milliseconds to days
+    const daysLeftThisYear = Math.ceil(diffThisYear / (1000 * 60 * 60 * 24));
+    const daysLeftNextYear = Math.ceil(diffNextYear / (1000 * 60 * 60 * 24));
+
+    // Determine days left until next Christmas
+    let daysLeft, nextChristmas;
+    if (diffThisYear >= 0) {
+        daysLeft = daysLeftThisYear;
+        nextChristmas = christmasThisYear;
+    } else {
+        daysLeft = daysLeftNextYear;
+        nextChristmas = christmasNextYear;
+    }
+
+    // Output the result
+    document.write(`Days left until Christmas (${nextChristmas.toLocaleDateString()}): ${daysLeft}`);
+}
+
+// Call the function to calculate and display days until next Christmas
+daysUntilChristmas();
