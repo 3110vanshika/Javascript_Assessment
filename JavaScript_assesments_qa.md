@@ -44,7 +44,7 @@ document.write("Current time is : " + hour + prepand + "&nbsp" + ":" + "&nbsp" +
 <!DOCTYPE html>
 <html>
 <head>
-    <title>Print Current Window</title>
+    <title>Welcome To My Website</title>
 </head>
 <body>
     <h5>Welcome to My Website</h5>
