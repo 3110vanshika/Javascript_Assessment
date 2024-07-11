@@ -47,7 +47,7 @@ document.write("Current time is : " + hour + prepand + "&nbsp" + ":" + "&nbsp" +
     <title>Print Current Window</title>
 </head>
 <body>
-    <h1>Welcome to My Website</h1>
+    <h5>Welcome to My Website</h5>
     <p>This is a sample content that will be printed.</p>
     <button onclick="printWindow()">Print this page</button>
 
@@ -198,7 +198,7 @@ Sample form :
     <title>Calculate Multiplication and Division</title>
 </head>
 <body>
-    <h2>Calculate Multiplication and Division</h2>
+    <h5>Calculate Multiplication and Division</h5>
     <form id="calcForm">
         <label for="num1">Enter first number:</label>
         <input type="number" id="num1" name="num1" required><br><br>
