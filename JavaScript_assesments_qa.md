@@ -41,23 +41,20 @@ document.write("Current time is : " + hour + prepand + "&nbsp" + ":" + "&nbsp" +
 
 #### Write a JavaScript program to print the contents of the current window
 
-<!DOCTYPE html>
-<html>
-<head>
-    <title>Welcome To My Website</title>
-</head>
-<body>
-    <h5>Welcome to My Website</h5>
-    <p>This is a sample content that will be printed.</p>
-    <button onclick="printWindow()">Print this page</button>
+// Create a new button element
+var button = document.createElement('button');
 
-    <script>
-        function printWindow() {
-            window.print();
-        }
-    </script>
-</body>
-</html>
+// Set button text
+button.textContent = 'Print Window';
+
+// Set button click event handler
+button.addEventListener('click', function() {
+    window.print();
+});
+
+// Append the button to the document body (or any other element)
+document.body.appendChild(button);
+
 
 #### Write a JavaScript program to get the current date.
 Expected Output :
@@ -99,8 +96,7 @@ console.log(str);
 // Rotate the string every 500 milliseconds 
 setInterval(rotateString, 500);
 
-#### Write a JavaScript program to determine whether a given year is a leap year in
-the Gregorian calendar.
+#### Write a JavaScript program to determine whether a given year is a leap year in the Gregorian calendar.
 
 function isLeapYear(year) {
     if ((year % 4 === 0 && year % 100 !== 0) || (year % 400 === 0)) {
@@ -131,14 +127,21 @@ function firstJanSunday () {
 
 #### Write a JavaScript program where the program takes a random integer between 1 to 10, the user is then prompted to input a guess number. If the user input matches with guess number, the program will display a message "Good Work" otherwise display a message "Not matched".
 
-<!-- Generate a random number between 1 and 10 -->
+// Generate a random number between 1 and 10
 const randomNumber = Math.floor(Math.random() * 10) + 1;
 
-<!-- User promt to guess a number -->
+// Prompt user to enter a guess number
 const userGuess = prompt("Guess a number between 1 and 10:");
 
-<!-- convert user input to string -->
+// Convert user input from string to integer
 const guessNumber = parseInt(userGuess);
+
+// Check if user's guess matches the random number
+if (guessNumber === randomNumber) {
+    document.write("Good Work!");
+} else {
+    document.write("Not matched. The correct number was " + randomNumber + ".");
+}
 
 #### Write a JavaScript program to calculate days left until next Christmas.
 
@@ -178,17 +181,8 @@ function daysUntilChristmas() {
 // Call the function to calculate and display days until next Christmas
 daysUntilChristmas();
 
-
-// Check if user's guess matches the random number
-if (guessNumber === randomNumber) {
-    document.write("Good Work!");
-} else {
-    document.write("Not matched. The correct number was " + randomNumber + ".");
-}
-
 #### Write a JavaScript program to calculate multiplication and division of two numbers (input from user).
 
-// javascript program to calculate multiplication and division
 <!DOCTYPE html>
 <html lang="en">
 <head>
