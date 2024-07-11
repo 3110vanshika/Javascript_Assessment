@@ -43,7 +43,7 @@ document.write("Current time is : " + hour + prepand + "&nbsp" + ":" + "&nbsp" +
 ```
 
 #### Write a JavaScript program to print the contents of the current window
-
+```JavaScript
 // Create a new button element
 var button = document.createElement('button');
 
@@ -57,12 +57,13 @@ button.addEventListener('click', function() {
 
 // Append the button to the document body (or any other element)
 document.body.appendChild(button);
-
+```
 
 #### Write a JavaScript program to get the current date.
 Expected Output :
 mm-dd-yyyy, mm/dd/yyyy or dd-mm-yyyy, dd/mm/yyyy
 
+```JavaScript
 const now = new Date();
 const day = String(now.getDay()).padStart(2, '0');
 const month = String(now.getMonth() + 1).padStart(2, '0');
@@ -72,10 +73,10 @@ document.write("mm-dd-yyyy : " + month + '-' + day + '-' + year + '<br>');
 document.write("mm/dd/yyyy : " + month + '/' + day + '/' + year + '<br>');
 document.write("dd-mm-yyyy : " + day + '-' + month + '-' + year + '<br>');
 document.write("dd/mm/yyyy : " + day + '/' + month + '/' + year);
+```
 
-#### Write a JavaScript program to find the area of a triangle where lengths of the
-three of its sides are 5, 6, 7.
-
+#### Write a JavaScript program to find the area of a triangle where lengths of the three of its sides are 5, 6, 7.
+```JavaScript
 const a = 5;
 const b = 6;
 const c = 7;
@@ -86,11 +87,11 @@ const s = a + b + c / 2;
 //calculate the area
 const area = Math.sqrt(s * (s - a) * (s - b) * (s - c));
 
-document.write("Area of triangle is : " + area
+document.write("Area of triangle is : " + area);
+```
 
-#### Write a JavaScript program to rotate the string 'w3resource' in right direction by periodically 
-removing one letter from the end of the string and attaching it to the front.
-
+#### Write a JavaScript program to rotate the string 'w3resource' in right direction by periodically removing one letter from the end of the string and attaching it to the front.
+```JavaScript
 let str = 'w3resource'; 
 function rotateString() { 
 str = str[str.length - 1] + str.substring(0, str.length - 1); 
@@ -98,9 +99,10 @@ console.log(str);
 } 
 // Rotate the string every 500 milliseconds 
 setInterval(rotateString, 500);
+```
 
 #### Write a JavaScript program to determine whether a given year is a leap year in the Gregorian calendar.
-
+```JavaScript
 function isLeapYear(year) {
     if ((year % 4 === 0 && year % 100 !== 0) || (year % 400 === 0)) {
         return true;
@@ -116,9 +118,10 @@ if (isLeapYear(year)) {
 } else {
     document.write(year + " is not a leap year.");
 }
+```
 
 #### Write a JavaScript program to find 1st January be a Sunday between 2014 and 2050.
-
+```JavaScript
 function firstJanSunday () {
     for(let year = 2014; year <= 2050; year++){
         const date = new Date(year, 0, 1);
@@ -127,9 +130,10 @@ function firstJanSunday () {
         }
     }
 }firstJanSunday();
+```
 
 #### Write a JavaScript program where the program takes a random integer between 1 to 10, the user is then prompted to input a guess number. If the user input matches with guess number, the program will display a message "Good Work" otherwise display a message "Not matched".
-
+```JavaScript
 // Generate a random number between 1 and 10
 const randomNumber = Math.floor(Math.random() * 10) + 1;
 
@@ -145,9 +149,10 @@ if (guessNumber === randomNumber) {
 } else {
     document.write("Not matched. The correct number was " + randomNumber + ".");
 }
+```
 
 #### Write a JavaScript program to calculate days left until next Christmas.
-
+```JavaScript
 function daysUntilChristmas() {
     // Get today's date
     const today = new Date();
@@ -183,9 +188,10 @@ function daysUntilChristmas() {
 
 // Call the function to calculate and display days until next Christmas
 daysUntilChristmas();
+```
 
 #### Write a JavaScript program to calculate multiplication and division of two numbers (input from user).
-
+```html
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -207,7 +213,8 @@ daysUntilChristmas();
     </form>
 
     <div id="result"></div>
-
+```
+```JavaScript
     <script>
         function calculate(operation) {
             // Get input values
@@ -229,12 +236,14 @@ daysUntilChristmas();
             `;
         }
     </script>
+```
 </body>
 </html>
+```
 
 #### Write a JavaScript program to convert temperatures to and from celsius, fahrenheit. [ Formula : c/5 = (f-32)/9 [ where c = temperature in celsius and f = temperature in fahrenheit ] 
 ##### Expected Output : 60°C is 140 °F 45°F is 7.222222222222222°C
-
+```JavaScript
 // Function to convert Celsius to Fahrenheit
 function celsiusToFahrenheit(celsius) {
     return (celsius * 9 / 5) + 32;
@@ -256,21 +265,23 @@ const celsiusResult = fahrenheitToCelsius(fahrenheitInput);
 // Output the results
 document.write(`${celsiusInput}°C is ${fahrenheitResult}°F`);
 document.write(`${fahrenheitInput}°F is ${celsiusResult}°C`);
+```
 
 #### Write a JavaScript program to get the website URL (loading page).
-
+```JavaScript
 // Get the current URL
 const currentURL = window.location.href;
 
 // Output the current URL
 document.write("The current URL is: " + currentURL);
 
-# JavaScripr Function
+```
 
 #### Write a JavaScript function that reverse a number. 
 Example x = 32243; 
 Expected Output : 34223
 
+```JavaScript
 function reverseNumber(num) {
     // Convert the number to a string
     const numStr = num.toString();
@@ -289,9 +300,10 @@ const x = 32243;
 const reversedX = reverseNumber(x);
 document.write("Original number:", x);
 document.write("Reversed number:", reversedX);
+```
 
 #### Write a JavaScript function that checks whether a passed string is palindrome or not? A palindrome is word, phrase, or sequence that reads the same backward as forward, e.g., madam or nurses run.
-
+```JavaScript
 function isPalindrome(str) {
     // Remove non-alphanumeric characters and convert to lowercase
     const string = str.replace(/[^a-zA-Z0-9]/g, '').toLowerCase();
@@ -305,11 +317,12 @@ function isPalindrome(str) {
 
 const testStr = "Racecar";
 document.write(`"${testStr}" is a palindrome: ${isPalindrome(testStr)}`);
+```
 
 #### Write a JavaScript function that generates all combinations of a string. 
 Example string : 'dog'
 Expected Output : d,do,dog,o,og,g
-
+```JavaScript
 function generateCombinations(str) {
     let combinations = [];
 
@@ -324,15 +337,15 @@ function generateCombinations(str) {
     return combinations;
 }
 
-// Example usage
 const testStr = 'dog';
 const result = generateCombinations(testStr);
 document.write(result.join(','));
+```
 
 #### Write a JavaScript function that returns a passed string with letters in alphabetical order. Example string : 'webmaster' 
 Expected Output : 'abeemrstw' 
 Assume punctuation and numbers symbols are not included in the passed string.
-
+```JavaScript
 function sortStringAlphabetically(str) {
     // Convert the string to an array of characters
     let charArray = str.split('').sort().join('');
@@ -340,16 +353,16 @@ function sortStringAlphabetically(str) {
     return charArray;
 }
 
-// Example usage
 const exampleStr = 'webmaster';
 const charArray = sortStringAlphabetically(exampleStr);
 document.write(`Original string: ${exampleStr}`);
 document.write(`Sorted string: ${charArray}`);
+```
 
 #### Write a JavaScript function that accepts a string as a parameter and converts the first letter of each word of the string in upper case. 
 Example string : 'the quick brown fox' 
 Expected Output : 'The Quick Brown Fox '
-
+```JavaScript
 function capitalizeWords(str) {
     // Split the string into an array of words
     const words = str.split(' ');
@@ -363,15 +376,15 @@ function capitalizeWords(str) {
     return capitalizedWords.join(' ');
 }
 
-// Example usage
 const exampleStr = 'the quick brown fox';
 const capitalizedStr = capitalizeWords(exampleStr);
 console.log(capitalizedStr); // Output: 'The Quick Brown Fox'
+```
 
 #### Write a JavaScript function that accepts a string as a parameter and find the longest word within the string. 
 Example string : 'Web Development Tutorial' 
 Expected Output : 'Development'
-
+```JavaScript
 function findLongestWord(str) {
     // Split the string into an array of words
     const words = str.split(' ');
@@ -390,16 +403,16 @@ function findLongestWord(str) {
     return longestWord;
 }
 
-// Example usage
 const exampleStr = 'Web Development Tutorial';
 const longestWord = findLongestWord(exampleStr);
 document.write(`Longest word in "${exampleStr}" is "${longestWord}"`);
+```
 
 #### Write a JavaScript function that accepts a string as a parameter and counts the number of vowels within the string. 
 Note : As the letter 'y' can be regarded as both a vowel and a consonant, we do not count 'y' as vowel here. 
 Example string : 'The quick brown fox' 
 Expected Output : 5
-
+```JavaScript
 function countVowels(str) {
     // Convert the string to lowercase to handle case insensitivity
     str = str.toLowerCase();
@@ -420,10 +433,9 @@ function countVowels(str) {
     
     return count;
 }
-
-// Example usage
 const exampleStr = 'The quick brown fox';
 const vowelCount = countVowels(exampleStr);
 
 // Output using document.write
 document.write(`Number of vowels in "${exampleStr}": ${vowelCount}`);
+```
