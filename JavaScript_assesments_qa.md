@@ -131,13 +131,13 @@ function firstJanSunday () {
 
 #### Write a JavaScript program where the program takes a random integer between 1 to 10, the user is then prompted to input a guess number. If the user input matches with guess number, the program will display a message "Good Work" otherwise display a message "Not matched".
 
-###### Generate a random number between 1 and 10
+<!-- Generate a random number between 1 and 10 -->
 const randomNumber = Math.floor(Math.random() * 10) + 1;
 
-###### Prompt user to enter a guess number
+<!-- User promt to guess a number -->
 const userGuess = prompt("Guess a number between 1 and 10:");
 
-###### Convert user input from string to integer
+<!-- convert user input to string -->
 const guessNumber = parseInt(userGuess);
 
 #### Write a JavaScript program to calculate days left until next Christmas.
@@ -267,3 +267,166 @@ const currentURL = window.location.href;
 
 // Output the current URL
 document.write("The current URL is: " + currentURL);
+
+# JavaScripr Function
+
+#### Write a JavaScript function that reverse a number. 
+Example x = 32243; 
+Expected Output : 34223
+
+function reverseNumber(num) {
+    // Convert the number to a string
+    const numStr = num.toString();
+    
+    // Split the string into an array of characters, reverse the array, and join it back into a string
+    const reversedStr = numStr.split('').reverse().join('');
+    
+    // Convert the reversed string back to a number
+    const reversedNum = parseInt(reversedStr, 10);
+    
+    return reversedNum;
+}
+
+// Example usage
+const x = 32243;
+const reversedX = reverseNumber(x);
+document.write("Original number:", x);
+document.write("Reversed number:", reversedX);
+
+#### Write a JavaScript function that checks whether a passed string is palindrome or not? A palindrome is word, phrase, or sequence that reads the same backward as forward, e.g., madam or nurses run.
+
+function isPalindrome(str) {
+    // Remove non-alphanumeric characters and convert to lowercase
+    const string = str.replace(/[^a-zA-Z0-9]/g, '').toLowerCase();
+
+    // Reverse the cleaned string
+    const reversedStr = string.split('').reverse().join('');
+
+    // Check if the cleaned string is the same as the reversed string
+    return string === reversedStr;
+}
+
+const testStr = "Racecar";
+document.write(`"${testStr}" is a palindrome: ${isPalindrome(testStr)}`);
+
+#### Write a JavaScript function that generates all combinations of a string. 
+Example string : 'dog'
+Expected Output : d,do,dog,o,og,g
+
+function generateCombinations(str) {
+    let combinations = [];
+
+    // Outer loop to pick starting character
+    for (let i = 0; i < str.length; i++) {
+        // Inner loop to create combinations with the starting character
+        for (let j = i + 1; j <= str.length; j++) {
+            combinations.push(str.substring(i, j));
+        }
+    }
+
+    return combinations;
+}
+
+// Example usage
+const testStr = 'dog';
+const result = generateCombinations(testStr);
+document.write(result.join(','));
+
+#### Write a JavaScript function that returns a passed string with letters in alphabetical order. Example string : 'webmaster' 
+Expected Output : 'abeemrstw' 
+Assume punctuation and numbers symbols are not included in the passed string.
+
+function sortStringAlphabetically(str) {
+    // Convert the string to an array of characters
+    let charArray = str.split('').sort().join('');
+    
+    return charArray;
+}
+
+// Example usage
+const exampleStr = 'webmaster';
+const charArray = sortStringAlphabetically(exampleStr);
+document.write(`Original string: ${exampleStr}`);
+document.write(`Sorted string: ${charArray}`);
+
+#### Write a JavaScript function that accepts a string as a parameter and converts the first letter of each word of the string in upper case. 
+Example string : 'the quick brown fox' 
+Expected Output : 'The Quick Brown Fox '
+
+function capitalizeWords(str) {
+    // Split the string into an array of words
+    const words = str.split(' ');
+
+    // Capitalize the first letter of each word
+    const capitalizedWords = words.map(word => {
+        return word.charAt(0).toUpperCase() + word.slice(1);
+    });
+
+    // Join the capitalized words back into a single string
+    return capitalizedWords.join(' ');
+}
+
+// Example usage
+const exampleStr = 'the quick brown fox';
+const capitalizedStr = capitalizeWords(exampleStr);
+console.log(capitalizedStr); // Output: 'The Quick Brown Fox'
+
+#### Write a JavaScript function that accepts a string as a parameter and find the longest word within the string. 
+Example string : 'Web Development Tutorial' 
+Expected Output : 'Development'
+
+function findLongestWord(str) {
+    // Split the string into an array of words
+    const words = str.split(' ');
+
+    // Initialize variables
+    let longestWord = '';
+
+    // Iterate through each word
+    words.forEach(word => {
+        // Compare lengths and update longestWord if current word is longer
+        if (word.length > longestWord.length) {
+            longestWord = word;
+        }
+    });
+
+    return longestWord;
+}
+
+// Example usage
+const exampleStr = 'Web Development Tutorial';
+const longestWord = findLongestWord(exampleStr);
+document.write(`Longest word in "${exampleStr}" is "${longestWord}"`);
+
+#### Write a JavaScript function that accepts a string as a parameter and counts the number of vowels within the string. 
+Note : As the letter 'y' can be regarded as both a vowel and a consonant, we do not count 'y' as vowel here. 
+Example string : 'The quick brown fox' 
+Expected Output : 5
+
+function countVowels(str) {
+    // Convert the string to lowercase to handle case insensitivity
+    str = str.toLowerCase();
+    
+    // Define the vowels (excluding 'y')
+    const vowels = ['a', 'e', 'i', 'o', 'u'];
+    
+    // Initialize a counter for vowels
+    let count = 0;
+    
+    // Loop through each character in the string
+    for (let i = 0; i < str.length; i++) {
+        // Check if the character is a vowel (excluding 'y')
+        if (vowels.includes(str[i]) && str[i] !== 'y') {
+            count++;
+        }
+    }
+    
+    return count;
+}
+
+// Example usage
+const exampleStr = 'The quick brown fox';
+const vowelCount = countVowels(exampleStr);
+
+// Output using document.write
+document.write(`Number of vowels in "${exampleStr}": ${vowelCount}`);
