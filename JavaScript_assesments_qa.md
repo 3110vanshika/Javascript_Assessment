@@ -4,6 +4,7 @@
 #### Sample Output : Today is : Friday.
 #### Current time is : 4 PM : 50 : 22
 
+```JavaScript
 var today = new Date();
 var day = today.getDay();
 
