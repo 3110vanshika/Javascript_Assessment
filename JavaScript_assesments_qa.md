@@ -1916,3 +1916,394 @@ function array_filled(length, value) {
 console.log(array_filled(6, 0));  
 console.log(array_filled(4, 11));
 ```
+#### Write a JavaScript function to move an array element from one position to another.  
+```javascript
+function move(arr, oldIndex, newIndex) {
+    if (oldIndex < 0) {
+        oldIndex = arr.length + oldIndex;
+    }
+    if (newIndex < 0) {
+        newIndex = arr.length + newIndex;
+    }
+
+    const element = arr.splice(oldIndex, 1)[0];
+    arr.splice(newIndex, 0, element);
+
+    return arr;
+}
+
+console.log(move([10, 20, 30, 40, 50], 0, 2));  
+console.log(move([10, 20, 30, 40, 50], -1, -2));
+```
+####  Write a JavaScript function to filter false, null, 0 and blank values from an array.  
+```javascript
+function filter_array_values(arr) {
+    return arr.filter(item => item);
+}
+console.log(filter_array_values([58, '', 'abcd', true, null, false, 0])); 
+```
+#### Write a JavaScript function to generate an array of specified length, filled with integer numbers, increase by one from starting position.  
+```javascript
+function array_range(start, length) {
+    return Array.from({length: length}, (_, i) => start + i);
+}
+console.log(array_range(1, 4));  
+console.log(array_range(-6, 4)); 
+```
+####  Write a JavaScript function to generate an array between two integers of 1 step length. 
+```javascript
+function rangeBetween(start, end) {
+    return Array.from({ length: end - start + 1 }, (_, i) => start + i);
+}
+console.log(rangeBetween(4, 7));  
+console.log(rangeBetween(-4, 7)); 
+```
+#### Write a JavaScript function to find the unique elements from two arrays.  
+```javascript
+function uniqueElements(arr1, arr2) {
+    let set1 = new Set(arr1);
+    let set2 = new Set(arr2);
+    let unionSet = new Set([...set1, ...set2]);
+    return [...unionSet];
+}
+
+console.log(uniqueElements([1, 2, 3], [100, 2, 1, 10])); 
+console.log(uniqueElements([1, 2, 3, 4, 5], [1, [2], [3, [[4]]], [5, 6]])); 
+console.log(uniqueElements([1, 2, 3], [100, 2, 1, 10])); 
+```
+# JavaScript Date
+#### Write a JavaScript function to check whether an `input` is a date object or not.  
+```javascript
+function is_date(input) {
+    return Object.prototype.toString.call(input) === '[object Date]';
+}
+console.log(is_date("October 13, 2014 11:13:00"));  
+console.log(is_date(new Date(86400000)));  
+console.log(is_date(new Date(99,5,24,11,33,30,0)));  
+console.log(is_date([1, 2, 4, 0])); 
+```
+#### Write a JavaScript function to get the current date.  
+```javascript
+function curday(separator) {
+    var today = new Date();
+    var dd = String(today.getDate()).padStart(2, '0');
+    var mm = String(today.getMonth() + 1).padStart(2, '0');
+    var yyyy = today.getFullYear();
+
+    return mm + separator + dd + separator + yyyy;
+}
+console.log(curday('/'));
+console.log(curday('-'));
+```
+#### Write a JavaScript function to get the number of days in a month.  
+```javascript
+function getDaysInMonth(month, year) {
+    return new Date(year, month, 0).getDate();
+}
+console.log(getDaysInMonth(1, 2012)); 
+console.log(getDaysInMonth(2, 2012));
+console.log(getDaysInMonth(9, 2012)); 
+console.log(getDaysInMonth(12, 2012));
+```
+####  Write a JavaScript function to get the month name from a particular date.  
+```javascript
+function month_name(date) {
+    const monthNames = [
+        "January", "February", "March", "April", "May", "June",
+        "July", "August", "September", "October", "November", "December"
+    ];
+    return monthNames[date.getMonth()];
+}
+console.log(month_name(new Date("10/11/2009")));
+console.log(month_name(new Date("11/13/2014")));
+```
+####  Write a JavaScript function to compare dates (i.e. greater than, less than or equal to).  
+```javascript
+function compare_dates(date1, date2) {
+    if (date1.getTime() === date2.getTime()) {
+        return "Date1 = Date2";
+    } else if (date1.getTime() > date2.getTime()) {
+        return "Date1 > Date2";
+    } else {
+        return "Date2 > Date1";
+    }
+}
+console.log(compare_dates(new Date('11/14/2013 00:00'), new Date('11/14/2013 00:00'))); 
+console.log(compare_dates(new Date('11/14/2013 00:01'), new Date('11/14/2013 00:00'))); 
+console.log(compare_dates(new Date('11/14/2013 00:00'), new Date('11/14/2013 00:01')));
+```
+#### Write a JavaScript function to add specified minutes to a Date object.  
+```javascript
+function add_minutes(date, minutes) {
+    return new Date(date.getTime() + minutes * 60000); 
+}
+
+console.log(add_minutes(new Date(2014,10,2), 30).toString());
+```
+#### Write a JavaScript function to test whether a date is a weekend.  
+```javascript
+function is_weekend(dateString) {
+    const date = new Date(dateString);
+    const dayOfWeek = date.getDay();
+
+    if (dayOfWeek === 0 || dayOfWeek === 6) {
+        return "weekend";
+    } else {
+        return undefined;
+    }
+}
+console.log(is_weekend('Nov 15, 2014'));  // Saturday
+console.log(is_weekend('Nov 16, 2014'));  // Sunday
+console.log(is_weekend('Nov 17, 2014'));  // Monday
+```
+####  Write a JavaScript function to get difference between two dates in days.  
+```javascripr
+function date_diff_indays(dateString1, dateString2) {
+    const date1 = new Date(dateString1);
+    const date2 = new Date(dateString2);
+    const timeDiff = Math.abs(date2.getTime() - date1.getTime());
+    const diffDays = Math.ceil(timeDiff / (1000 * 3600 * 24));
+
+    return diffDays;
+}
+console.log(date_diff_indays('04/02/2014', '11/04/2014'));  
+console.log(date_diff_indays('12/02/2014', '11/04/2014')); 
+```
+#### Write a JavaScript function to get the last day of a month.  
+```javacscript
+function lastday(year, month) {
+    const lastDay = new Date(year, month + 1, 0).getDate();
+    return lastDay;
+}
+console.log(lastday(2014, 0)); 
+console.log(lastday(2014, 1));  
+console.log(lastday(2014, 11));
+```
+#### Write a JavaScript function to calculate 'yesterday day'.  
+```javascript
+function yesterday(dateString) {
+    let date = new Date(dateString);
+    
+    date.setDate(date.getDate() - 1);
+    
+    return date.toString();
+}
+console.log(yesterday('Nov 15, 2014'));  
+console.log(yesterday('Nov 16, 2015')); 
+console.log(yesterday('Nov 17, 2016'));
+```
+#### Write a JavaScript function to get the maximum date from an array of dates.  
+```javascript
+function max_date(dateArray) {
+    let dates = dateArray.map(dateStr => new Date(dateStr));
+    let maxDate = new Date(Math.max.apply(null, dates));
+    return maxDate.toISOString().slice(0,10).replace(/-/g,"/");
+}
+console.log(max_date(['2015/02/01', '2015/02/02', '2015/01/03'])); 
+```
+####  Write a JavaScript function to get the minimum date from an array of dates.  
+```javascript
+function min_date(dateArray) {
+    let dates = dateArray.map(dateStr => new Date(dateStr));
+    let minDate = new Date(Math.min.apply(null, dates));
+    return minDate.toISOString().slice(0,10).replace(/-/g,"/");
+}
+console.log(min_date(['2015/02/01', '2015/02/02', '2015/01/03'])); 
+```
+####  Write a JavaScript function that will return the number of minutes in hours and minutes. 
+```javascript
+function timeConvert(minutes) {
+    if (minutes < 0) {
+        return "Please enter a positive number of minutes.";
+    }
+    let hours = Math.floor(minutes / 60);
+    let remainingMinutes = minutes % 60;
+    
+    let hourString = hours === 1 ? "hour" : "hours";
+    let minuteString = remainingMinutes === 1 ? "minute" : "minutes";
+    
+    return `${minutes} minutes = ${hours} ${hourString} and ${remainingMinutes} ${minuteString}.`;
+}
+console.log(timeConvert(200)); 
+```
+#### Write a JavaScript function to get the amount of days of a year.  
+```javascript
+function daysOfYear(year) {
+    if ((year % 4 === 0 && year % 100 !== 0) || year % 400 === 0) {
+        return 366;
+    } else {
+        return 365; 
+    }
+}
+console.log(daysOfYear(2023)); 
+console.log(daysOfYear(2024)); 
+```
+#### Write a JavaScript function to get the quarter (1 to 4) of the year.  
+```javascript
+function quarter_of_the_year(date) {
+    let month = date.getMonth();
+    if (month >= 0 && month <= 2) {
+        return 1; 
+    } else if (month >= 3 && month <= 5) {
+        return 2;
+    } else if (month >= 6 && month <= 8) {
+        return 3; 
+    } else {
+        return 4; 
+    }
+}
+console.log(quarter_of_the_year(new Date(2015, 1, 21)));
+console.log(quarter_of_the_year(new Date(2015, 10, 18)));
+```
+####  Write a JavaScript function to count the number of days passed since beginning of the year.  
+```javascript
+function days_passed(date) {
+    let startOfYear = new Date(date.getFullYear(), 0, 0);
+    let diff = date - startOfYear;
+    let oneDay = 1000 * 60 * 60 * 24;
+    let daysPassed = Math.floor(diff / oneDay);
+    return daysPassed;
+}
+console.log(days_passed(new Date(2015, 0, 15))); 
+console.log(days_passed(new Date(2015, 11, 14))); 
+```
+#### Write a JavaScript function to convert a Unix timestamp to time.  
+```javascript
+function days_passed(date) {
+    let startOfYear = new Date(date.getFullYear(), 0, 0);
+    let diff = date - startOfYear;
+    let days = Math.floor(diff / (1000 * 60 * 60 * 24));
+
+    return days;
+}
+console.log(days_passed(new Date(2015, 0, 15)));  
+console.log(days_passed(new Date(2015, 11, 14)));
+```
+####  Write a JavaScript program to calculate age.  
+```javascript
+function calculate_age(birthDate) {
+    let currentDate = new Date();
+    let age = currentDate.getFullYear() - birthDate.getFullYear();
+    if (currentDate.getMonth() < birthDate.getMonth() || 
+        (currentDate.getMonth() === birthDate.getMonth() && currentDate.getDate() < birthDate.getDate())) {
+        age--;
+    }
+    return age;
+}
+console.log(calculate_age(new Date(1982, 11, 4))); 
+console.log(calculate_age(new Date(1962, 1, 1))); 
+```
+#### Write a JavaScript function to get the day of the month, 2 digits with leading zeros.   
+```javascript
+function day_of_the_month(date) {
+    let day = date.getDate();
+    let formattedDay = String(day).padStart(2, '0');
+    return formattedDay;
+}
+let d = new Date(2015, 10, 1); 
+console.log(day_of_the_month(d));
+```
+#### Write a JavaScript function to get a textual representation of a day (three letters, Mon through Sun).   
+```javascript
+function short_Days(date) {
+    const days = ['Sun', 'Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat'];
+    let dayIndex = date.getDay();
+    return days[dayIndex];
+}
+let dt = new Date(2015, 10, 1);
+console.log(short_Days(dt)); 
+```
+####  Write a JavaScript function to get a full textual representation of the day of the week (Sunday through Saturday).   
+```javascript
+function long_Days(date) {
+    const days = ['Sunday', 'Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday'];
+    let dayIndex = date.getDay();
+    return days[dayIndex];
+}
+let dt = new Date(2015, 10, 1);  
+console.log(long_Days(dt));
+```
+#### Write a JavaScript function to get ISO-8601 numeric representation of the day of the week (1 (for Monday) to 7 (for Sunday)).   
+```javascript
+function ISO_numeric_date(date) {
+    let isoDay = date.getDay();
+    if (isoDay === 0) {
+        isoDay = 7; 
+    }
+
+    return isoDay;
+}
+let dt = new Date(2015, 10, 1); 
+console.log(ISO_numeric_date(dt)); 
+```
+####  Write a JavaScript function to get English ordinal suffix for the day of the month, 2 characters (st, nd, rd or th.).   
+```javascript
+function english_ordinal_suffix(date) {
+    let day = date.getDate();
+    let suffix = "";
+
+    if (day % 10 === 1 && day !== 11) {
+        suffix = "st";
+    } else if (day % 10 === 2 && day !== 12) {
+        suffix = "nd";
+    } else if (day % 10 === 3 && day !== 13) {
+        suffix = "rd";
+    } else {
+        suffix = "th";
+    }
+    return day + suffix;
+}
+
+let dt = new Date(2015, 10, 1);
+console.log(english_ordinal_suffix(dt));
+```
+#### Write a JavaScript function to get ISO-8601 week number of year, weeks starting on Monday.   
+```javascript
+function ISO8601_week_no(dt) {
+    let tdt = new Date(dt.valueOf());
+    let dayn = (dt.getDay() + 6) % 7;
+    tdt.setDate(tdt.getDate() - dayn + 3);
+    let firstThursday = tdt.valueOf();
+    tdt.setMonth(0, 1);
+    if (tdt.getDay() !== 4) {
+        tdt.setMonth(0, 1 + ((4 - tdt.getDay()) + 7) % 7);
+    }
+    return 1 + Math.ceil((firstThursday - tdt) / 604800000);
+}
+let dt = new Date(2015, 10, 1);  
+console.log(ISO8601_week_no(dt)); 
+```
+####  Write a JavaScript function to get a full textual representation of a month, such as January or June.   
+```javascript
+function full_month(dt) {
+    const monthNames = [
+        "January", "February", "March", "April", "May", "June",
+        "July", "August", "September", "October", "November", "December"
+    ];
+    let monthIndex = dt.getMonth();
+    return monthNames[monthIndex];
+}
+let dt = new Date(2015, 10, 1); 
+console.log(full_month(dt)); 
+```
+#### Write a JavaScript function to get a numeric representation of a month, with leading zeros (01 through 12).   
+```javascript
+function numeric_month(dt) {
+    let monthIndex = dt.getMonth() + 1;
+    return monthIndex.toString().padStart(2, '0');
+}
+let dt = new Date(2015, 10, 1);  
+console.log(numeric_month(dt));
+```
+####  Write a JavaScript function to get a short textual representation of a month, three letters (Jan through Dec).   
+```javascript
+function short_months(dt) {
+    const months = ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 
+                    'Jul', 'Aug', 'Sep', 'Oct', 'Nov', 'Dec'];
+    let monthIndex = dt.getMonth();
+    return months[monthIndex];
+}
+
+let dt = new Date(2015, 10, 1); 
+console.log(short_months(dt)); 
+```
