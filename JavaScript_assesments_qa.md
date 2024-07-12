@@ -438,3 +438,123 @@ const vowelCount = countVowels(exampleStr);
 // Output using document.write
 document.write(`Number of vowels in "${exampleStr}": ${vowelCount}`);
 ```
+
+####  Write a JavaScript function that accepts a number as a parameter and check the number is prime or not.  
+```JavaScript
+function isPrime(num) {
+    if (num <= 1) {
+        return false;
+    }
+    if (num <= 3) {
+        return true;
+    }
+    if (num % 2 === 0 || num % 3 === 0) {
+        return false;
+    }
+    for (let i = 5; i * i <= num; i += 6) {
+        if (num % i === 0 || num % (i + 2) === 0) {
+            return false;
+        }
+    }
+    return true;
+}
+const number = 29;
+const result = isPrime(number);
+console.log(`${number} is ${result ? 'a prime' : 'not a prime'} number.`);
+```
+####  Write a JavaScript function which accepts an argument and returns the type.
+```javascript
+function getType(value) {
+    return typeof value;
+}
+
+// Example usage:
+console.log(getType(42));
+console.log(getType("hello"));
+console.log(getType(true));
+console.log(getType(function() {}));
+console.log(getType({}));
+console.log(getType(undefined));
+console.log(getType(null)); 
+console.log(getType([])); 
+console.log(getType(/regex/));
+```
+#### Write a JavaScript function which returns the n rows by n columns identity matrix.
+```javascript
+function createIdentityMatrix(n) {
+    const matrix = [];
+    for (let i = 0; i < n; i++) {
+        const row = [];
+        for (let j = 0; j < n; j++) {
+            row.push(i === j ? 1 : 0);
+        }
+        matrix.push(row);
+    }
+    return matrix;
+}
+
+const n = 4;
+const identityMatrix = createIdentityMatrix(n);
+console.log(identityMatrix);
+```
+####  Write a JavaScript function which will take an array of numbers stored and find the second lowest and second greatest numbers, respectively.  
+```javascript
+function findSecondLowestAndGreatest(arr) {
+    if (arr.length < 2) {
+        return null
+    }
+    const uniqueArr = [...new Set(arr)];
+
+    uniqueArr.sort((a, b) => a - b);
+    const secondLowest = uniqueArr[1];
+    const secondGreatest = uniqueArr[uniqueArr.length - 2];
+    return {
+        secondLowest: secondLowest,
+        secondGreatest: secondGreatest
+    };
+}
+
+const sampleArray = [1, 2, 3, 4, 5];
+const result = findSecondLowestAndGreatest(sampleArray);
+console.log(`Second Lowest: ${result.secondLowest}, Second Greatest: ${result.secondGreatest}`);
+```
+#### Write a JavaScript function which says whether a number is perfect. 
+```javascript
+function isPerfectNumber(num) {
+    if (num <= 1) {
+        return false;
+    }
+
+    let sum = 0;
+    for (let i = 1; i < num; i++) {
+        if (num % i === 0) {
+            sum += i;
+        }
+    }
+    return sum === num;
+}
+
+const number = 28;
+const result = isPerfectNumber(number);
+console.log(`${number} is ${result ? 'a perfect' : 'not a perfect'} number.`); 
+```
+####  Write a JavaScript function to compute the factors of a positive integer. 
+```javascript
+function getFactors(num) {
+    if (num <= 0) {
+        return "Please enter a positive integer.";
+    }
+
+    const factors = [];
+    for (let i = 1; i <= num; i++) {
+        if (num % i === 0) {
+            factors.push(i);
+        }
+    }
+    return factors;
+}
+
+const number = 28;
+const factors = getFactors(number);
+console.log(`Factors of ${number}: ${factors.join(', ')}`); 
+```
