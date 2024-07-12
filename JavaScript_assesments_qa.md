@@ -558,3 +558,78 @@ const number = 28;
 const factors = getFactors(number);
 console.log(`Factors of ${number}: ${factors.join(', ')}`); 
 ```
+####  Write a JavaScript function to convert an amount to coins. 
+```javascript
+function amountToCoins(amount, coins) {
+    if (amount <= 0) {
+        return [];
+    }
+
+    const result = [];
+    for (let i = 0; i < coins.length; i++) {
+        while (amount >= coins[i]) {
+            amount -= coins[i];
+            result.push(coins[i]);
+        }
+    }
+    return result;
+}
+const amount = 46;
+const coins = [25, 10, 5, 2, 1];
+const coinDistribution = amountToCoins(amount, coins);
+console.log(`Amount ${amount} can be converted to coins: ${coinDistribution.join(', ')}`); 
+```
+####  Write a JavaScript function to compute the value of bn where n is the exponent and b is the bases. Accept b and n from the user and display the result.  
+```html
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Exponent Calculator</title>
+</head>
+<body>
+    <h1>Exponent Calculator</h1>
+    <label for="base">Base (b):</label>
+    <input type="number" id="base" name="base"><br><br>
+    <label for="exponent">Exponent (n):</label>
+    <input type="number" id="exponent" name="exponent"><br><br>
+    <button onclick="calculateExponent()">Calculate</button>
+    <p id="result"></p>
+
+    <script src="script.js"></script>
+</body>
+</html>
+```
+###### script.js
+```javascript
+function calculateExponent() {
+    const base = parseFloat(document.getElementById('base').value);
+    const exponent = parseInt(document.getElementById('exponent').value);
+    
+    if (isNaN(base) || isNaN(exponent)) {
+        document.getElementById('result').innerText = 'Please enter valid numbers for base and exponent.';
+        return;
+    }
+
+    const result = Math.pow(base, exponent);
+    document.getElementById('result').innerText = `Result: ${base}^${exponent} = ${result}`;
+}
+```
+#### Write a JavaScript function to extract unique characters from a string. 
+```javscript
+function extractUniqueCharacters(str) {
+    const uniqueChars = new Set();
+
+    for (const char of str) {
+        uniqueChars.add(char);
+    }
+
+    return [...uniqueChars].join('');
+}
+
+const exampleString = "thequickbrownfoxjumpsoverthelazydog";
+const uniqueCharacters = extractUniqueCharacters(exampleString);
+console.log(`Unique characters: ${uniqueCharacters}`);
+```
+#### 
