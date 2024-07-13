@@ -217,7 +217,7 @@ daysUntilChristmas();
 <script src="./srcipt.js"></script>
 </html>
 ```
-###### Script.js
+###### script.js
 ```JavaScript
         function calculate(operation) {
             // Get input values
@@ -2306,4 +2306,1178 @@ function short_months(dt) {
 
 let dt = new Date(2015, 10, 1); 
 console.log(short_months(dt)); 
+```
+#### Write a JavaScript function to get a full numeric representation of a year (4 digits).   
+```javascript
+function full_year(dt) {
+    return dt.getFullYear();
+}
+
+let dt = new Date(2015, 10, 1); 
+console.log(full_year(dt));
+```
+#### Write a JavaScript function to get a two digit representation of a year.   
+```javascript
+function short_year(dt) {
+    let fullYear = dt.getFullYear();
+    let twoDigitYear = fullYear.toString().slice(-2);
+    return twoDigitYear;
+}
+
+let dt = new Date(1989, 10, 1);  
+console.log(short_year(dt));  
+```
+#### Write a JavaScript function to get lowercase Ante meridiem and Post meridiem. 
+```javascript
+function get_am_pm(dt) {
+    let hours = dt.getHours();
+    let am_pm = hours >= 12 ? 'pm' : 'am';
+    return am_pm;
+}
+
+let dt1 = new Date(2021, 7, 21, 10, 30);  
+let dt2 = new Date(2021, 7, 21, 15, 45);
+console.log(get_am_pm(dt1));      
+console.log(get_am_pm(dt2));         
+```
+####  Write a JavaScript function to get uppercase Ante meridiem and Post meridiem. 
+```javascript
+function get_AM_PM(dt) {
+    let hours = dt.getHours();
+    let am_pm = hours >= 12 ? 'PM' : 'AM';
+    return am_pm;
+}
+
+let dt1 = new Date(2021, 7, 21, 10, 30); 
+let dt2 = new Date(2021, 7, 21, 15, 45);
+console.log(get_AM_PM(dt1));             
+console.log(get_AM_PM(dt2));     
+```
+####  Write a JavaScript function to swatch Internet time (000 through 999).   
+```javacsript
+function internet_time(dt) {
+    let utcHours = dt.getUTCHours();
+    let utcMinutes = dt.getUTCMinutes();
+    let utcSeconds = dt.getUTCSeconds();
+    let totalSecondsUTC = (utcHours * 3600) + (utcMinutes * 60) + utcSeconds;
+
+    let totalSecondsBMT = totalSecondsUTC + 3600;
+
+    let beats = Math.floor(totalSecondsBMT / 86.4);
+
+    if (beats >= 1000) beats -= 1000;
+
+    return ("000" + beats).slice(-3);
+}
+let dt1 = new Date(Date.UTC(1989, 10, 1)); 
+console.log(internet_time(dt1));
+
+let dt2 = new Date(Date.UTC(2021, 7, 21, 15, 45)); 
+console.log(internet_time(dt2));
+```
+####  Write a JavaScript function to get 12-hour format of an hour with leading zeros.   
+```javascript
+function hours_with_zeroes(dt) {
+    let hours = dt.getHours();
+    let hours12 = hours % 12 || 12;
+    return ("0" + hours12).slice(-2);
+}
+
+let dt = new Date(1989, 10, 1);
+console.log(hours_with_zeroes(dt));
+```
+#### Write a JavaScript function to get 24-hour format of an hour without leading zeros.   
+```javascript
+function hours_without_zeroes(dt) {
+    return dt.getHours();
+}
+let dt = new Date(1989, 10, 1);
+console.log(hours_without_zeroes(dt));
+```
+####  Write a JavaScript function to get minutes with leading zeros (00 to 59).   
+```javascript
+function minutes_with_leading_zeros(dt) {
+    let minutes = dt.getMinutes();
+    return minutes < 10 ? '0' + minutes : minutes.toString();
+}
+
+let dt = new Date(1989, 10, 1);
+console.log(minutes_with_leading_zeros(dt));  
+```
+####  Write a JavaScript function to get seconds with leading zeros (00 through 59).   
+```javascript
+function seconds_with_leading_zeros(dt) {
+    let seconds = dt.getSeconds();
+    return seconds < 10 ? '0' + seconds : seconds.toString();
+}
+
+let dt = new Date(1989, 10, 1);
+console.log(seconds_with_leading_zeros(dt)); 
+```
+#### Write a JavaScript function to get Timezone.   
+```javascript
+function seconds_with_leading_zeros(dt) 
+{ 
+  return /\((.*)\)/.exec(new Date().toString())[1];
+}
+dt = new Date(); 
+console.log(seconds_with_leading_zeros(dt)); 
+dt = new Date(1989, 10, 1); 
+console.log(seconds_with_leading_zeros(dt));
+```
+####  Write a JavaScript function to find whether or not the date is in daylights savings time.   
+```javascript
+
+function daylights_savings(dt) 
+{ 
+  var dst = null;
+  for (var i = 0; i < 12; ++i) 
+    {
+      var d = new Date(dt.getFullYear(), i, 1);
+      var offset = dt.getTimezoneOffset();
+      if (dst === null) 
+        dst = offset;
+      else if (offset < dst) 
+         {
+           dst = offset; 
+           break;
+         } 
+      else if (offset > dst) 
+        break;
+         }
+return (dt.getTimezoneOffset() == dst) | 0;
+}
+
+dt = new Date(); 
+console.log(daylights_savings(dt)); 
+dt = new Date(1989, 10, 1); 
+console.log(daylights_savings(dt));
+```
+####  Write a JavaScript function to get difference to Greenwich time (GMT) in hours.   
+```javascript
+function diff_to_GMT(dt) 
+{ 
+   return (-dt.getTimezoneOffset() < 0 ? '-' : '+') + (Math.abs(dt.getTimezoneOffset() / 60) < 10 ? '0' : '') + (Math.abs(dt.getTimezoneOffset() / 60)) + '00';
+}
+dt = new Date(); 
+console.log(diff_to_GMT(dt)); 
+```
+#### Write a JavaScript function to get timezone offset in seconds.   
+```javascript
+function timezone_offset_in_seconds(dt) 
+{ 
+   return -dt.getTimezoneOffset() * 60;
+}
+
+dt = new Date(); 
+console.log(timezone_offset_in_seconds(dt)); 
+```
+#### Write a JavaScript function to add specified years to a date.  
+```javascript
+function add_years(dt,n) 
+ {
+ return new Date(dt.setFullYear(dt.getFullYear() + n));      
+ }
+dt = new Date(2014,10,2);
+console.log(add_years(dt, 10).toString());
+```
+####  Write a JavaScript function to add specified weeks to a date.  
+```javascript
+function add_weeks(dt, n) 
+ {
+ return new Date(dt.setDate(dt.getDate() + (n * 7)));      
+ }
+dt = new Date(2014,10,2);
+console.log(add_weeks(dt, 10).toString());
+```
+####  Write a JavaScript function to add specified months to a date.  
+```javascript
+function add_months(dt, n) 
+ {
+ return new Date(dt.setMonth(dt.getMonth() + n));      
+ }
+dt = new Date(2014,10,2);
+console.log(add_months(dt, 10).toString());
+```
+####  Write a JavaScript function to get time differences in minutes between two dates.  
+```javascript
+function diff_minutes(dt2, dt1) 
+ {
+  var diff =(dt2.getTime() - dt1.getTime()) / 1000;
+  diff /= 60;
+  return Math.abs(Math.round(diff));
+ }
+
+dt1 = new Date("October 13, 2014 11:11:00");
+dt2 = new Date("October 13, 2014 11:13:00");
+console.log(diff_minutes(dt1, dt2));
+```
+####  Write a JavaScript function to get time differences in hours between two dates.  
+```javascript
+function diff_hours(dt2, dt1) 
+ {
+  var diff =(dt2.getTime() - dt1.getTime()) / 1000;
+  diff /= (60 * 60);
+  return Math.abs(Math.round(diff));
+ }
+
+dt1 = new Date("October 13, 2014 08:11:00");
+dt2 = new Date("October 13, 2014 11:13:00");
+console.log(diff_hours(dt1, dt2));
+```
+####  Write a JavaScript function to get time differences in days between two dates.  
+```javascript
+function diff_days(dt2, dt1) 
+{
+  var diff = (dt2.getTime() - dt1.getTime()) / 1000;
+  diff /= (60 * 60 * 24);
+  return Math.abs(Math.round(diff));
+}
+dt1 = new Date("October 13, 2014 08:11:00");
+dt2 = new Date("October 19, 2014 11:13:00");
+console.log(diff_days(dt1, dt2));
+```
+#### Write a JavaScript function to get time differences in weeks between two dates.  
+```javascript
+function diff_weeks(dt2, dt1) 
+{
+  var diff =(dt2.getTime() - dt1.getTime()) / 1000;
+  diff /= (60 * 60 * 24 * 7);
+  return Math.abs(Math.round(diff));
+}
+dt1 = new Date("June 13, 2014 08:11:00");
+dt2 = new Date("October 19, 2014 11:13:00");
+console.log(diff_weeks(dt1, dt2));
+```
+#### Write a JavaScript function to get time differences in months between two dates.  
+```javascript
+function diff_months(dt2, dt1) 
+ {
+  var diff =(dt2.getTime() - dt1.getTime()) / 1000;
+  return Math.abs(Math.round(diff));
+  
+ }
+dt1 = new Date("June 13, 2014 08:11:00");
+dt2 = new Date("October 19, 2014 11:13:00");
+console.log(diff_months(dt1, dt2));
+```
+#### Write a JavaScript function to get time differences in years between two dates.  
+```javascript
+function diff_years(dt2, dt1) 
+{
+  var diff = (dt2.getTime() - dt1.getTime()) / 1000;
+  diff /= (60 * 60 * 24);
+  return Math.abs(Math.round(diff / 365.25));
+}
+
+dt1 = new Date("June 13, 2014 08:11:00");
+dt2 = new Date("October 19, 2017 11:13:00");
+console.log(diff_years(dt1, dt2));
+```
+####  Write a JavaScript function to get the week start date.  
+```javascript
+function startOfWeek(date)
+{
+  var diff = date.getDate() - date.getDay() + (date.getDay() === 0 ? -6 : 1);
+  return new Date(date.setDate(diff));
+}
+dt = new Date(); 
+console.log(startOfWeek(dt).toString());
+```
+#### Write a JavaScript function to get the week end date. 
+```javascript
+function endOfWeek(date)
+  {
+    var lastday = date.getDate() - (date.getDay() - 1) + 6;
+    return new Date(date.setDate(lastday));
+  }
+dt = new Date(); 
+console.log(endOfWeek(dt).toString());
+```
+#### Write a JavaScript function to get the month start date. 
+```javascript
+function startOfMonth(date)
+{
+    return new Date(date.getFullYear(), date.getMonth(), 1);
+}
+
+dt = new Date(); 
+console.log(startOfMonth(dt).toString());
+```
+#### Write a JavaScript function to get the month end date.
+```javascript
+function endOfMonth(date)
+  {
+  return new Date(date.getFullYear(), date.getMonth() + 1, 0);
+  }
+
+dt = new Date(); 
+console.log(endOfMonth(dt).toString());
+```
+# JavaScript String 
+####  Write a JavaScript function to check whether an `input` is a string or not.  
+```javascript
+isString = function (input) {
+    if (Object.prototype.toString.call(input) === '[object String]')
+        return true;
+    else
+        return false;
+};
+console.log(isString('w3resource'));
+console.log(isString([1, 2, 4, 0]));
+```
+#### Write a JavaScript function to check whether a string is blank or not.  
+```javascript
+function isBlank(input) {
+    if (input.length === 0)
+        return true;
+    else
+        return false;
+}
+console.log(isBlank(''));
+console.log(isBlank('abc'));
+```
+#### Write a JavaScript function to split a string and convert it into an array of words.  
+```javascript
+function stringToArray (str) {
+    return str.trim().split(" ");
+};
+console.log(stringToArray("Robin Singh"));
+```
+####  Write a JavaScript function to remove specified number of characters from a string.  
+```javascript
+function truncateString(str1, length) {
+    if ((str1.constructor === String) && (length>0)) {
+        return str1.slice(0, length);
+    }
+};
+console.log(truncateString("Abhilash Singh",4));
+```
+####  Write a JavaScript function to hide email addresses to protect from unauthorized user.  
+```javascript
+function protectEmail (user_email) {
+    var avg, splitted, part1, part2;
+    splitted = user_email.split("@");
+    part1 = splitted[0];
+    avg = part1.length / 2;
+    part1 = part1.substring(0, (part1.length - avg));
+    part2 = splitted[1];
+    return part1 + "...@" + part2;
+};
+
+console.log(protectEmail("abhilash_singh@example.com"));
+```
+####  Write a JavaScript function to parameterize a string.  
+```javascript
+function parameterizeAString (str1) {
+    return str1.trim().toLowerCase().replace(/[^a-zA-Z0-9 -]/, "").replace(/\s/g, "-");
+};
+console.log(parameterizeAString("Abhilash Singh from India."));
+```
+####  Write a JavaScript function to capitalize the first letter of a string.  
+```javascript
+function capitalizeString(str1) {
+    return str1.charAt(0).toUpperCase() + str1.slice(1);
+}
+console.log(capitalizeString('javascript string exercises'));
+```
+####  Write a JavaScript function to capitalize the first letter of each word in a string.  
+```javascript
+function capitalizeStringWords(str)
+{
+  return str.replace(/\w\S*/g, function(txt){return txt.charAt(0).toUpperCase() + txt.substr(1).toLowerCase();});
+}
+console.log(capitalizeStringWords('javascript string exercises'));
+```
+#### Write a JavaScript function that takes a string which has lower and upper case letters as a parameter and converts upper case letters to lower case, and lower case letters to upper case.  
+```javascript
+function string(str) {
+    return str.replace(/([a-z]+)|([A-Z]+)/g, function(match, chr) {
+        return chr ? match.toUpperCase() : match.toLowerCase();
+    });
+}
+console.log(string('AaBbc'));
+```
+#### Write a JavaScript function to convert a string into camel case. 
+```javascript
+function camelizeString(str) {
+    return str.replace(/\W+(.)/g, function(match, chr) {
+        return chr.toUpperCase();
+    });
+}
+
+console.log(camelizeString("JavaScript Exercises"));
+console.log(camelizeString("JavaScript exercises"));
+console.log(camelizeString("JavaScriptExercises"));
+```
+####  Write a JavaScript function to uncamelize a string.  
+```javascript
+function uncamelizeString(str, separator) {
+    if(typeof(separator) == "undefined") {
+      separator = " ";
+    }
+    var str = str.replace(/[A-Z]/g, function (letter) 
+    {
+      return separator + letter.toLowerCase();
+    });
+    return str.replace("/^" + separator + "/", '');
+  }
+  console.log(uncamelizeString('helloWorld'));
+  console.log(uncamelizeString('helloWorld','-'));
+  console.log(uncamelizeString('helloWorld','_'));
+  ```
+####  Write a JavaScript function to concatenates a given string n times (default is 1).  
+```javascript
+function repeatString(str, count) {
+    if (typeof (count) == "undefined") {
+        count = 1;
+    }
+    return count < 1 ? '' : new Array(count + 1).join(str);
+}
+console.log(repeatString('Ha!'));
+console.log(repeatString('Ha!', 2));
+console.log(repeatString('Ha!', 3));
+```
+####  Write a JavaScript function to insert a string within a string at a particular position (default is 1). 
+```javascript
+function insertString(main_string, ins_string, pos) {
+    if(typeof(pos) == "undefined") {
+     pos = 0;
+   }
+    if(typeof(ins_string) == "undefined") {
+     ins_string = '';
+   }
+    return main_string.slice(0, pos) + ins_string + main_string.slice(pos);
+ }
+ console.log(insertString('We are doing some exercises.'));
+ console.log(insertString('We are doing some exercises.','JavaScript '));
+ console.log(insertString('We are doing some exercises.','JavaScript ',18));
+ ```
+####  Write a JavaScript function to humanized number (Formats a number to a human-readable string.) with the correct suffix such as 1st, 2nd, 3rd or 4th.  
+```javascript
+function humanizeReadableString(num) {
+    if (typeof (num) == "undefined") return;
+    if (num % 100 >= 11 && num % 100 <= 13)
+        return num + "th";
+    switch (num % 10) {
+        case 1: return num + "st";
+        case 2: return num + "nd";
+        case 3: return num + "rd";
+    }
+    return num + "th";
+}
+console.log(humanizeReadableString());
+console.log(humanizeReadableString(1));
+console.log(humanizeReadableString(8));
+console.log(humanizeReadableString(301));
+console.log(humanizeReadableString(402));
+```
+####  Write a JavaScript function to truncates a string if it is longer than the specified number of characters. Truncated strings will end with a translatable ellipsis sequence ("…") (by default) or specified characters.  
+```javascript
+function truncateString(str, length, ending) {
+    if (length == null) {
+      length = 100;
+    }
+    if (ending == null) {
+      ending = '...';
+    }
+    if (str.length > length) {
+      return str.substring(0, length - ending.length) + ending;
+    } else {
+      return str;
+    }
+  };
+console.log(truncateString('We are doing javascript string exercises.'))
+console.log(truncateString('We are doing javascript string exercises.',19))
+console.log(truncateString('We are doing javascript string exercises.',15,'!!'))
+```
+####  Write a JavaScript function to chop a string into chunks of a given length.  
+```javascript
+function stringChop(str, size){
+    if (str == null) return [];
+    str = String(str);
+    size = ~~size;
+return size > 0 ? str.match(new RegExp('.{1,' + size + '}', 'g')) : [str];
+}
+console.log(stringChop('w3resource'));
+console.log(stringChop('w3resource',2));
+console.log(stringChop('w3resource',3));
+```
+#### . Write a JavaScript function to count the occurrence of a substring in a string.  
+```javascript
+function countSubString(main_str, sub_str) 
+{
+    main_str += '';
+    sub_str += '';
+    if (sub_str.length <= 0) 
+    {
+        return main_str.length + 1;
+    }
+    subStr = sub_str.replace(/[.*+?^${}()|[\]\\]/g, '\\$&');
+    return (main_str.match(new RegExp(subStr, 'gi')) || []).length;
+}
+console.log(countSubString("The quick brown fox jumps over the lazy dog", 'the'));
+console.log(countSubString("The quick brown fox jumps over the lazy dog", 'fox',false));
+```
+####  Write a JavaScript function to escape a HTML string.  
+```javacsript
+function escape_HTML(str) {
+    return str.replace(/&/g, '&amp;')
+        .replace(/</g, '&lt;')
+        .replace(/>/g, '&gt;')
+        .replace(/"/g, '&quot;')
+        .replace(/'/g, '&#39;');
+}
+
+console.log(escape_HTML('<a href="javascript-string-exercise-17.php" target="_blank">'));
+```
+#### Write a JavaScript function that can pad (left, right) a string to get to a determined length. 
+```javascript
+function formattedString(pad, user_str, pad_pos) {
+    if (typeof user_str === 'undefined') 
+      return pad;
+    if (pad_pos == 'l') {
+      return (pad + user_str).slice(-pad.length);
+    } 
+    else {
+      return (user_str + pad).substring(0, pad.length);
+    }
+  }
+  console.log(formattedString('0000',123,'l'));
+  console.log(formattedString('00000000',123,''));
+  ```
+#### Write a JavaScript function to repeat a string a specified times.  
+```javascript
+function repeat_string(string, count) 
+  {
+    if ((string == null) || (count < 0) || (count === Infinity) || (count == null))
+      {
+        return('Error in string or count.');
+      }
+    count = count | 0;
+    return new Array(count + 1).join(string);
+  }
+console.log(repeat_string('a', 4));
+```
+####  Write a JavaScript function to get a part of a string after a specified character. 
+```javascript
+function specifiedCharacter(str, char, pos)
+{
+  if(pos=='b')
+    return str.substring(str.indexOf(char) + 1);
+  else if(pos=='a') 
+    return str.substring(0, str.indexOf(char));
+  else
+    return str;  
+}
+console.log(specifiedCharacter('w3resource: JavaScript Exercises', ':','a'));
+console.log(specifiedCharacter('w3resource: JavaScript Exercises', 'E','b'));
+```
+####  Write a JavaScript function to strip leading and trailing spaces from a string.  
+```javascript
+function strip(str) {
+    return str.replace(/^\s+|\s+$/g, '');
+}
+console.log(strip('w3resource '));    
+console.log(strip(' w3resource'));    
+console.log(strip(' w3resource  '));
+```
+####  Write a JavaScript function to truncate a string to a certain number of words.  
+```javascript
+function truncate(str, no_words) {
+    return str.split(" ").splice(0,no_words).join(" ");
+}
+console.log(truncate('The quick brown fox jumps over the lazy dog', 4));
+```
+#### Write a JavaScript function to alphabetize a given string.  
+```javascript
+function alphabetizeString(str) 
+{
+    return str.split('').sort().join('').trim();
+}
+console.log(alphabetizeString('United States'));
+```
+####  Write a JavaScript function to remove the first occurrence of a given 'search string' from a string.  
+```javascript
+function alphabetizeString(str) 
+{
+    return str.split('').sort().join('').trim();
+}
+console.log(alphabetizeString('United States'));
+```
+#### Write a JavaScript function to convert ASCII to Hexadecimal format.  
+```javascript
+function asciiToHexa(str)
+{
+    var arr1 = [];
+    for (var n = 0, l = str.length; n < l; n++)
+    {
+        var hex = Number(str.charCodeAt(n)).toString(16);
+        arr1.push(hex);
+    }
+    return arr1.join('');
+}
+console.log(asciiToHexa('12'));
+console.log(asciiToHexa('100'));
+```
+####  Write a JavaScript function to convert Hexadecimal to ASCII format.  
+```javascript
+function hexToAscii(str1) {
+    var hex = str1.toString();
+    var str = '';
+    for (var n = 0; n < hex.length; n += 2) {
+        str += String.fromCharCode(parseInt(hex.substr(n, 2), 16));
+    }
+    return str;
+}
+console.log(hexToAscii('3132'));  
+console.log(hexToAscii('313030')); 
+```
+####  Write a JavaScript function to find a word within a string.  
+```javascript
+function searchWord(text, word){
+    var x = 0, y=0;
+    for (i=0;i< text.length;i++)
+        {
+        if(text[i] == word[0])
+            {
+            for(j=i;j< i+word.length;j++)
+               {
+                if(text[j]==word[j-i])
+                  {
+                    y++;
+                  }
+                if (y==word.length){
+                    x++;
+                }
+            }
+            y=0;
+        }
+    }
+   return "'"+word+"' was found "+x+" times.";
+}
+
+console.log(searchWord('The quick brown fox', 'fox'));
+console.log(searchWord('aa, bb, cc, dd, aa', 'aa'));
+```
+####  Write a JavaScript function check if a string ends with specified suffix.  
+```javascript
+function stringSuffix(str, suffix) 
+{
+    if (((str === null) || (str === '')) || ((suffix === null) || (suffix === '')))
+    {
+        return false;
+    }
+    else
+    {  
+        str = str.toString();
+        suffix = suffix.toString();
+    }
+    return str.indexOf(suffix, str.length - suffix.length) !== -1;
+}
+console.log(stringSuffix('JS PHP PYTHON', 'PYTHON')); 
+console.log(stringSuffix('JS PHP PYTHON', ''))
+```
+####  Write a JavaScript function to escapes special characters (&, <, >, ', ") for use in HTML. 
+```javascript
+function escape_html(str) {
+    if (str === null || str === '') {
+        return false;
+    } else {
+        str = str.toString();
+    }
+    var map = {
+        '&': '&amp;',
+        '<': '&lt;',
+        '>': '&gt;',
+        '"': '&quot;',
+        "'": '&#39;'
+    };
+    return str.replace(/[&<>"']/g, function(m) { return map[m]; });
+}
+console.log(escape_html('PHP & MySQL'));
+console.log(escape_html('3 > 2')); 
+```
+####  Write a JavaScript function to remove non-printable ASCII chars.  
+```javascript
+function removeNonAsciiCharacter(str) {
+    if ((str === null) || (str === ''))
+        return false;
+    else
+        str = str.toString();
+    return str.replace(/[^\x20-\x7E]/g, '');
+}
+console.log(removeNonAsciiCharacter('äÄçÇéÉêPHP-MySQLöÖÐþúÚ'));
+```
+#### Write a JavaScript function to remove non-word characters.  
+```javascript
+function removeNonWordCharacter (str) {
+    if ((str===null) || (str===''))
+       return false;
+    else
+       str = str.toString();
+    var PATTERN = /[^\x20\x2D0-9A-Z\x5Fa-z\xC0-\xD6\xD8-\xF6\xF8-\xFF]/g;
+    return str.replace(PATTERN, '');
+}
+console.log(removeNonWordCharacter('PHP ~!@#$%^&*()+`-={}[]|\\:";\'/?><., MySQL'));
+```
+####  Write a JavaScript function to convert a string to title case.  
+```javascript
+function stringToTitleCase(str) {
+    if ((str === null) || (str === ''))
+        return false;
+    else
+        str = str.toString();
+    return str.replace(/\w\S*/g, function (txt) { return txt.charAt(0).toUpperCase() + txt.substr(1).toLowerCase(); });
+}
+console.log(stringToTitleCase('Js exercises'));
+```
+####  Write a JavaScript function to remove HTML/XML tags from string.  
+```javascript
+function removeHtmlTag(str) {
+    if ((str === null) || (str === '')) {
+        return false;
+    } else {
+        str = str.toString();
+    }
+    return str.replace(/<[^>]*>/g, '');
+}
+console.log(removeHtmlTag('PHP Exercises'));
+```
+####  Write a JavaScript function to create a Zerofilled value with optional +, - sign.  
+```javascript
+function zeroFill(number, width, osign) {
+    var num = '' + Math.abs(number),
+        zerosw = width - num.length,
+        sign = number >= 0;
+    return (sign ? (osign ? '+' : '') : '-') +
+        Math.pow(10, Math.max(0, zerosw)).toString().substr(1) + num;
+}
+
+console.log(zeroFill(120, 5, '-')); 
+console.log(zeroFill(29, 4));
+```
+####  Write a JavaScript function to test case insensitive (except special Unicode characters) string comparison.  
+```javascript
+function caseInsensitiveString(str1, str2) {
+    var areEqual = str1.toUpperCase() === str2.toUpperCase();
+    return areEqual;
+}
+
+console.log(caseInsensitiveString('abcd', 'AbcD')); 
+console.log(caseInsensitiveString('ABCD', 'Abce')); 
+```
+#### Write a JavaScript function to create a case-insensitive search.  
+```javascript
+function caseInsensitiveSearch(str, search_str) {
+    var result = str.search(new RegExp(search_str, "i"));
+    if (result > 0)
+        return 'Matched';
+    else
+        return 'Not Matched';
+}
+console.log(caseInsensitiveSearch('JavaScript Exercises', 'exercises'));
+console.log(caseInsensitiveSearch('JavaScript Exercises', 'Exercises'));
+console.log(caseInsensitiveSearch('JavaScript Exercises', 'Exercisess'));
+```
+# JavaScript Validation with regular 
+####  Write a JavaScript program to test the first character of a string is uppercase or not. 
+```javascript
+function uppercaseString(str)
+{
+   regexp = /^[A-Z]/;
+   if (regexp.test(str))
+    {
+      console.log("String's first character is uppercase");
+    } 
+    else
+    {
+      console.log("String's first character is not uppercase");
+    }
+}
+uppercaseString('Abcd');
+uppercaseString('abcd');
+```
+####  Write a JavaScript program to check a credit card number. 
+```javascript
+function isCreditCardNumber(str)
+{
+ regexp = /^(?:(4[0-9]{12}(?:[0-9]{3})?)|(5[1-5][0-9]{14})|(6(?:011|5[0-9]{2})[0-9]{12})|(3[47][0-9]{13})|(3(?:0[0-5]|[68][0-9])[0-9]{11})|((?:2131|1800|35[0-9]{3})[0-9]{11}))$/;
+  
+        if (regexp.test(str))
+          {
+            return true;
+          }
+        else
+          {
+            return false;
+          }
+}
+console.log(isCreditCardNumber("378282246310006"));
+console.log(isCreditCardNumber("37828224630006"));
+```
+#### Write a pattern that matches e-mail addresses.  
+```javascript
+function validateEmail(str) {
+    var mailformat = /^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$/;
+    if (mailformat.test(str)) {
+        console.log("Valid email address!");
+    }
+    else {
+        console.log("You have entered an invalid email address!");
+    }
+}
+
+validateEmail('me-info@example.com');
+```
+#### Write a JavaScript program to search a date within a string. 
+```javscript
+function dateWithString (str)
+{
+ regexp = /^(1[0-2]|0?[1-9])\/(3[01]|[12][0-9]|0?[1-9])\/(?:[0-9]{2})?[0-9]{2}$/;
+  
+        if (regexp.test(str))
+          {
+            return true;
+          }
+        else
+          {
+            return false;
+          }
+}
+console.log(dateWithString ("01/01/2015"));
+console.log(dateWithString ("01/22/2015"));
+console.log(dateWithString ("32/01/2015"));
+```
+#### Write a JavaScript program that work as a trim function (string) using regular expression. 
+```javascript
+function Trim(str)
+{
+  var result;
+  if (typeof str === 'string') 
+  {
+    result = str.replace(/^\s+|\s+$/g, '');
+    return result;
+  }
+  else
+  {
+    return false;
+  }
+}
+console.log(Trim(' w3resource '));
+```
+#### Write a JavaScript program to count number of words in string.
+```javascript
+function countWords(str) {
+    str = str.trim();
+    str = str.replace(/\s+/g, ' ');
+    str = str.replace(/\n /g, '\n');
+    var words = str.split(' ');
+    words = words.filter(function(word) {
+        return word.length > 0;
+    });
+    return words.length;
+}
+console.log(countWords("   This is   a   test string.  ")); 
+console.log(countWords("Hello\n world!  This  is   a\n  test."));
+```
+####  Write a JavaScript function to check whether a given value is IP value or not. 
+```javascript
+function isIp(str)
+{
+ regexp =  /^(([0-9]|[1-9][0-9]|1[0-9]{2}|2[0-4][0-9]|25[0-5])\.){3}([0-9]|[1-9][0-9]|1[0-9]{2}|2[0-4][0-9]|25[0-5])$|^(([a-zA-Z]|[a-zA-Z][a-zA-Z0-9\-]*[a-zA-Z0-9])\.)*([A-Za-z]|[A-Za-z][A-Za-z0-9\-]*[A-Za-z0-9])$|^\s*((([0-9A-Fa-f]{1,4}:){7}([0-9A-Fa-f]{1,4}|:))|(([0-9A-Fa-f]{1,4}:){6}(:[0-9A-Fa-f]{1,4}|((25[0-5]|2[0-4]\d|1\d\d|[1-9]?\d)(\.(25[0-5]|2[0-4]\d|1\d\d|[1-9]?\d)){3})|:))|(([0-9A-Fa-f]{1,4}:){5}(((:[0-9A-Fa-f]{1,4}){1,2})|:((25[0-5]|2[0-4]\d|1\d\d|[1-9]?\d)(\.(25[0-5]|2[0-4]\d|1\d\d|[1-9]?\d)){3})|:))|(([0-9A-Fa-f]{1,4}:){4}(((:[0-9A-Fa-f]{1,4}){1,3})|((:[0-9A-Fa-f]{1,4})?:((25[0-5]|2[0-4]\d|1\d\d|[1-9]?\d)(\.(25[0-5]|2[0-4]\d|1\d\d|[1-9]?\d)){3}))|:))|(([0-9A-Fa-f]{1,4}:){3}(((:[0-9A-Fa-f]{1,4}){1,4})|((:[0-9A-Fa-f]{1,4}){0,2}:((25[0-5]|2[0-4]\d|1\d\d|[1-9]?\d)(\.(25[0-5]|2[0-4]\d|1\d\d|[1-9]?\d)){3}))|:))|(([0-9A-Fa-f]{1,4}:){2}(((:[0-9A-Fa-f]{1,4}){1,5})|((:[0-9A-Fa-f]{1,4}){0,3}:((25[0-5]|2[0-4]\d|1\d\d|[1-9]?\d)(\.(25[0-5]|2[0-4]\d|1\d\d|[1-9]?\d)){3}))|:))|(([0-9A-Fa-f]{1,4}:){1}(((:[0-9A-Fa-f]{1,4}){1,6})|((:[0-9A-Fa-f]{1,4}){0,4}:((25[0-5]|2[0-4]\d|1\d\d|[1-9]?\d)(\.(25[0-5]|2[0-4]\d|1\d\d|[1-9]?\d)){3}))|:))|(:(((:[0-9A-Fa-f]{1,4}){1,7})|((:[0-9A-Fa-f]{1,4}){0,5}:((25[0-5]|2[0-4]\d|1\d\d|[1-9]?\d)(\.(25[0-5]|2[0-4]\d|1\d\d|[1-9]?\d)){3}))|:)))(%.+)?\s*$/;
+  
+        if (regexp.test(str))
+          {
+            return true;
+          }
+        else
+          {
+            return false;
+          }
+}
+console.log(isIp('198.156.23.5'));
+console.log(isIp("172.16.0.1"));
+```
+#### Write a JavaScript function to count the number of vowels in a given string.  
+```javascript
+function countVowel(str) {
+
+    return str.match(/[aeiou]/gi).length;
+}
+console.log(countVowel('The quick brown fox jumps over the lazy dog'));
+```
+#### . Write a JavaScript function to check whether a given value is an valid url or not. 
+```javascript
+function isValidUrl(str)
+{
+  regexp =  /^(?:(?:https?|ftp):\/\/)?(?:(?!(?:10|127)(?:\.\d{1,3}){3})(?!(?:169\.254|192\.168)(?:\.\d{1,3}){2})(?!172\.(?:1[6-9]|2\d|3[0-1])(?:\.\d{1,3}){2})(?:[1-9]\d?|1\d\d|2[01]\d|22[0-3])(?:\.(?:1?\d{1,2}|2[0-4]\d|25[0-5])){2}(?:\.(?:[1-9]\d?|1\d\d|2[0-4]\d|25[0-4]))|(?:(?:[a-z\u00a1-\uffff0-9]-*)*[a-z\u00a1-\uffff0-9]+)(?:\.(?:[a-z\u00a1-\uffff0-9]-*)*[a-z\u00a1-\uffff0-9]+)*(?:\.(?:[a-z\u00a1-\uffff]{2,})))(?::\d{2,5})?(?:\/\S*)?$/;
+        if (regexp.test(str))
+        {
+          return true;
+        }
+        else
+        {
+          return false;
+        }
+}
+console.log(isValidUrl("http://www.example.com"));
+console.log(isValidUrl("https://www.example.com"));
+console.log(isValidUrl("www.example.com"));
+```
+####  Write a JavaScript function to check whether a given value is alpha numeric or not. 
+```javascript
+function isAlphaNumeric(str)
+{
+ regexp = /^[A-Za-z0-9]+$/;
+  
+        if (regexp.test(str))
+          {
+            return true;
+          }
+        else
+          {
+            return false;
+          }
+}
+console.log(isAlphaNumeric("37828sad"));
+console.log(isAlphaNumeric("3243#$sew"));
+```
+####  Write a JavaScript function to check whether a given value is time string or not. 
+```javascript
+function isTimeString(str)
+{
+ regexp = /^(2[0-3]|[01]?[0-9]):([0-5]?[0-9]):([0-5]?[0-9])$/;
+  
+        if (regexp.test(str))
+          {
+            return true;
+          }
+        else
+          {
+            return false;
+          }
+}
+console.log(isTimeString("11:35:30"));
+console.log(isTimeString("90:90:90"));
+```
+####  Write a JavaScript function to check whether a given value is US zip code or not. 
+```javascript
+function isUsZipCode(str)
+{
+ regexp = /^[0-9]{5}(?:-[0-9]{4})?$/;
+  
+        if (regexp.test(str))
+          {
+            return true;
+          }
+        else
+          {
+            return false;
+          }
+}
+console.log(isUsZipCode("03201-2150"));
+console.log(isUsZipCode("7892"));
+```
+#### Write a JavaScript function to check whether a given value is UK Post Code or not.  
+```javascript
+function isukPostCode(str)
+{
+ regexp = /^[A-Z]{1,2}[0-9RCHNQ][0-9A-Z]?\s?[0-9][ABD-HJLNP-UW-Z]{2}$|^[A-Z]{2}-?[0-9]{4}$/;
+  
+        if (regexp.test(str))
+          {
+            return true;
+          }
+        else
+          {
+            return false;
+          }
+}
+console.log(isukPostCode("B294HJ"));
+console.log(isukPostCode("7892"));
+```
+####  Write a JavaScript function to check whether a given value is Canada Post Code or not.
+```javascript
+function isCanadaPostCode(str)
+{
+ regexp = /^(?!.*[DFIOQU])[A-VXY][0-9][A-Z]\s?[0-9][A-Z][0-9]$/;
+  
+        if (regexp.test(str))
+          {
+            return true;
+          }
+        else
+          {
+            return false;
+          }
+}
+console.log(isCanadaPostCode("K8V3Y1"));
+console.log(isCanadaPostCode("K8V 3Y1"));
+console.log(isCanadaPostCode("Z4V4X1"));
+```
+#### Write a JavaScript function to check whether a given value is a social security number or not.  
+```javascript
+function isSocialSecurityNumber(str)
+{
+ regexp = /^(?!000|666)[0-8][0-9]{2}-(?!00)[0-9]{2}-(?!0000)[0-9]{4}$/;
+        if (regexp.test(str))
+          {
+            return true;
+          }
+        else
+          {
+            return false;
+          }
+}
+console.log(isSocialSecurityNumber("019-90-5680"));
+console.log(isSocialSecurityNumber("K8V-3Y1"));
+```
+####  Write a JavaScript function to check whether a given value is hexadecimal value or not.
+```javascript
+function isHexadecimal(str)
+{
+ regexp = /^[0-9a-fA-F]+$/;
+  
+        if (regexp.test(str))
+          {
+            return true;
+          }
+        else
+          {
+            return false;
+          }
+}
+console.log(isHexadecimal("ffffff"));
+console.log(isHexadecimal("fz5500"));
+```
+####  Write a JavaScript function to check whether a given value is hexcolor value or not.  
+```javascript
+function isHexcolor(str)
+{
+ regexp = /^#?([0-9a-fA-F]{3}|[0-9a-fA-F]{6})$/;
+  
+        if (regexp.test(str))
+          {
+            return true;
+          }
+        else
+          {
+            return false;
+          }
+}
+console.log(isHexcolor("#444"));
+console.log(isHexcolor("#3333"));
+```
+#### Write a JavaScript function to check whether a given value represents a domain or not.
+```javascript
+function isDomain(str)
+{
+ regexp = /^[a-z0-9]+([\-\.]{1}[a-z0-9]+)*\.[a-z]{2,6}$/i;
+  
+        if (regexp.test(str))
+          {
+            return true;
+          }
+        else
+          {
+            return false;
+          }
+}
+console.log(isDomain('www.example.com'));
+console.log(isDomain('www.npm.co.uk'));
+console.log(isDomain('http://www.example.com'));
+console.log(isDomain('https://www.example.com'));
+console.log(isDomain('www.example.com'));
+```
+#### Write a JavaScript function to check whether a given value is html or not.
+```javascript
+function isHtml(str)
+{
+ regexp = /<([a-z]+) *[^/]*?>/;
+  
+        if (regexp.test(str))
+          {
+            return true;
+          }
+        else
+          {
+            return false;
+          }
+}
+console.log(isHtml('<div></div>'));
+console.log(isHtml(''));
+console.log(isHtml('.selector'));
+```
+####  Write a JavaScript function to check a given value contains alpha, dash and underscore.
+```javascript
+function isAlphaDash(str)
+{
+ regexp = /^[a-z0-9_\-]+$/i;
+  
+        if (regexp.test(str))
+          {
+            return true;
+          }
+        else
+          {
+            return false;
+          }
+}
+console.log(isAlphaDash('12-133'));
+console.log(isAlphaDash('100_23'));
+```
+####  Write a JavaScript function to print an integer with commas as thousands separators.  
+```javascript
+function thousandsSeparators(num)
+  {
+    var num_parts = num.toString().split(".");
+    num_parts[0] = num_parts[0].replace(/\B(?=(\d{3})+(?!\d))/g, ",");
+    return num_parts.join(".");
+  }
+
+console.log(thousandsSeparators(1000));
+console.log(thousandsSeparators(10000.23));
+console.log(thousandsSeparators(100000));
+```
+# JavaScript DOM 
+#### Here is a sample html file with a submit button. Now modify the style of the paragraph text through javascript code.  
+Sample HTML file : 
+<!DOCTYPE html>   
+<html><br><head>   
+<meta charset=utf-8 />   
+<title>JS DOM paragraph style</title>   
+</head>    
+<body>   
+<p id ='text'>JavaScript Exercises - w3resource</p>    
+<div>   
+<button id="jsstyle" onclick="js_style()">Style</button>   
+</div>   
+</body>   
+</html>   
+Clicking on the button the font, font size, and color of the paragraph text will be changed.
+```html
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset=utf-8 />
+    <title>JS DOM paragraph style</title>
+</head>
+<body>
+    <p id='text'>JavaScript Exercises - w3resource</p>
+    <div>
+        <button id="jsstyle" onclick="js_style()">Style</button>
+    </div>
+</body>
+<script src="./script.js"></script>
+</html>
+```
+###### script.js
+```javascript
+function js_style() 
+{
+    text.style.fontSize = "14pt";
+    text.style.fontFamily = "Comic Sans MS";
+    text.style.color = "green";
+}
 ```
