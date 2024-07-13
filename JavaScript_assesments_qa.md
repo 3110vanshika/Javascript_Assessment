@@ -3443,6 +3443,7 @@ console.log(thousandsSeparators(100000));
 # JavaScript DOM 
 #### Here is a sample html file with a submit button. Now modify the style of the paragraph text through javascript code.  
 Sample HTML file : 
+```html
 <!DOCTYPE html>   
 <html><br><head>   
 <meta charset=utf-8 />   
@@ -3454,8 +3455,9 @@ Sample HTML file :
 <button id="jsstyle" onclick="js_style()">Style</button>   
 </div>   
 </body>   
-</html>   
-Clicking on the button the font, font size, and color of the paragraph text will be changed.
+</html>
+``` 
+#### Clicking on the button the font, font size, and color of the paragraph text will be changed.
 ```html
 <!DOCTYPE html>
 <html>
