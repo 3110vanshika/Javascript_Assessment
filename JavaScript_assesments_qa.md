@@ -3499,6 +3499,7 @@ Last name: <input type="text" name="lname" value="Beckham"><br>
 </body>   
 </html>
 ```
+###### html
 ```html
 <!DOCTYPE html>
 <html>
@@ -3535,4 +3536,1780 @@ function getFormvalue()
   }
 }
 ```
-#### 
+####  Write a JavaScript program to set the background color of a paragraph.  
+###### html
+```html
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset=utf-8 />
+    <title>Set the background color of a paragraph</title>
+</head>
+<body>
+    <input type="button" value="Click to set paragraph background color" onclick="set_background()">
+    <p>w3resource JavaScript Exercises</p>
+    <p>w3resource PHP Exercises</p>
+</body>
+<script src="./script.js"></script>
+</html>
+```
+###### script.js
+```javascript
+function set_background() {
+  docBody = document.getElementsByTagName("body")[0];
+  myBodyElements = docBody.getElementsByTagName("p");
+  myp1 = myBodyElements[0];
+  myp1.style.background = "rgb(255,0,0)";
+  myp2 = myBodyElements[1];
+  myp2.style.background = "rgb(255,255,0)";
+}
+```
+####  Here is a sample html file with a submit button. Write a JavaScript function to get the value of the href, hreflang, rel, target, and type attributes of the specified link. 
+```html
+<!DOCTYPE html>   
+<html><head>   
+<meta charset=utf-8 />   
+</head>   
+<body>   
+<p><a id="w3r" type="text/html" hreflang="enus" rel="nofollow" target="_self" href="http://www.w3resource.com/">w3reso urce</a></p>   
+<button onclick="getAttributes()">Click here to get  attributes value</button>   
+</body></html>
+```
+###### HTML
+```html
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset=utf-8 />
+    <title>Collect the value of href, hreflang, rel, target, and type attributes of a link</title> 
+</head>
+<body>
+    <p><a id="w3r" type="text/html" hreflang="en-us" rel="nofollow" target="_self" href="https://www.w3resource.com/">w3resource</a></p>
+    <button onclick="getAttributes()">Click here to get the attribute's value</button> 
+</body>
+<script src="./script.js"></script>
+</html>
+```
+###### javascript
+```javascript
+function getAttributes()
+{
+    var u = document.getElementById("w3r").href;
+    alert('The value of the href attribute of the link is : '+u);
+    var v = document.getElementById("w3r").hreflang; 
+    alert('The value of the hreflang attribute of the link is : '+v);
+    var w = document.getElementById("w3r").rel; 
+    alert('The value of the rel attribute of the link is : '+w);
+    var x = document.getElementById("w3r").target; 
+    alert('The value of the target attribute of the link is : '+x);
+    var y = document.getElementById("w3r").type; 
+    alert('The value of the type attribute of the link is : '+y);  
+}
+```
+#### Write a JavaScript function to add rows to a table.  
+```html
+<!DOCTYPE html>   
+<html><head><br><meta charset=utf-8 />   
+<title>Insert row in a table - w3resource</title>   
+</head><body>   
+<table id="sampleTable" border="1">   
+<tr><td>Row1 cell1</td>   
+<td>Row1 cell2</td></tr>   
+<tr><td>Row2 cell1</td>   
+<td>Row2 cell2</td></tr>   
+</table><br>   
+<input type="button" onclick="insert_Row()" value="Insert row">    
+</body></html>
+```
+###### html
+```html
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset=utf-8 />
+    <title>Insert row in a table - w3resource</title>
+</head>
+<body>
+    <table id="sampleTable" border="1">
+        <tr>
+            <td>Row1 cell1</td>
+            <td>Row1 cell2</td>
+        </tr>
+        <tr>
+            <td>Row2 cell1</td>
+            <td>Row2 cell2</td>
+        </tr>
+    </table><br>
+    <input type="button" onclick="insert_Row()" value="Insert row">
+</body>
+<script src="./script.js"></script>
+</html>
+```
+###### javascript
+```javascript
+function insert_Row()
+{
+    var x=document.getElementById('sampleTable').insertRow(0);
+    var y = x.insertCell(0);
+    var z = x.insertCell(1);
+    y.innerHTML="New Cell1";
+    z.innerHTML="New Cell2";
+}
+```
+#### Write a JavaScript function that accept row, column, (to identify a particular cell) and a string to update the content of that cell.  
+```html
+<!DOCTYPE html>   
+<html><head><br><meta charset=utf-8 />   
+<title>Change the content of a cell</title>   
+</head><body>   
+<table id="myTable" border="1">   
+<tr><td>Row1 cell1</td>   
+<td>Row1 cell2</td></tr>   
+<tr><td>Row2 cell1</td>   
+<td>Row2 cell2</td></tr>   
+<tr><td>Row3 cell1</td>   
+<td>Row3 cell2</td></tr>   
+</table><form>   
+<input type="button" onclick="changeContent()" value="Change content">   
+</form></body></html>
+```
+###### javascript
+```javascript
+function changeContent()
+{
+    rn = window.prompt("Input the Row number(0,1,2)", "0");
+    cn = window.prompt("Input the Column number(0,1)","0");
+    content = window.prompt("Input the Cell content");  
+    var x=document.getElementById('myTable').rows[parseInt(rn,10)].cells;
+    x[parseInt(cn,10)].innerHTML=content;
+}
+```
+####  Write a JavaScript function that creates a table, accept row, column numbers from the user, and input row-column number as content (e.g. Row-0 Column-0) of a cell.  
+```html
+<!DOCTYPE html>   
+<html>   
+<head>   
+<meta charset=utf-8 />   
+<title>Change the content of a cell</title>   
+<style type="text/css">   
+   body {margin: 30px;}   
+</style>     
+</head><body>   
+<table id="myTable" border="1">   
+</table><form>   
+<input type="button" onclick="createTable()" value="Create the table">   
+</form></body></html>
+```
+###### javascript
+```javascript
+function createTable()
+{
+    rn = window.prompt("Input number of rows", 1);
+    cn = window.prompt("Input number of columns",1);
+    for(var r=0;r<parseInt(rn,10);r++)
+    {
+        var x=document.getElementById('myTable').insertRow(r);
+        for(var c=0;c<parseInt(cn,10);c++)  
+        {
+            var y=  x.insertCell(c);
+            y.innerHTML="Row-"+r+" Column-"+c; 
+        }
+    }
+}
+```
+####  Write a JavaScript program to remove items from a dropdown list.  
+Sample HTML file : 
+```html
+<!DOCTYPE html>   
+<html><head>   
+<meta charset=utf-8 />   
+<title>Remove items from a dropdown list</title>   
+</head><body><form>   
+<select id="colorSelect">   
+<option>Red</option>   
+<option>Green</option>   
+<option>White</option>   
+<option>Black</option>   
+</select>   
+<input type="button" onclick="removecolor()" value="Select and Remove"><br
+ ></form></body></html>
+```
+###### javascript
+```javascript
+function removecolor() {
+  var x = document.getElementById("colorSelect");
+  x.remove(x.selectedIndex);
+}
+```
+####  Write a JavaScript program to count and display the items of a dropdown list, in an alert window.  
+Sample HTML file : 
+```html
+<!DOCTYPE html>   
+<html><head>   
+<meta charset=utf-8 />   
+<style type="text/css">   
+ body {margin: 30px;}   
+</style>      
+<title>Count and display items of a dropdown list - w3resource</title>   
+</head><body><form>   
+Select your favorite Color :   
+<select id="mySelect">   
+<option>Red</option>   
+<option>Green</option>   
+<option>Blue</option>   
+<option>White</option>   
+</select>   
+<input type="button" onclick="getOptions()" value="Count and Output all items">   
+</form></body></html>
+```
+###### javascript
+```javascript
+function calculateVolume() {
+  var radius = document.getElementById("radius").value;
+  if (radius > 0) {
+      var volume = (4/3) * Math.PI * Math.pow(radius, 3);
+      document.getElementById("volume").value = volume.toFixed(2);
+  } else {
+      alert("Please enter a positive number for the radius.");
+  }
+}
+```
+####  Write a JavaScript program to display a random image (clicking on a button) from the following list.  
+###### html
+```html
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<title>Display random image</title>
+<style>  
+    body { padding-top: 30px; }
+</style>
+</head>
+<body>
+    <div>
+        <button id="jsstyle" onclick="display_random_image();">Show Image</button> 
+    </div>
+<script src="./script.js"></script>
+</body>
+</html>
+```
+###### javascript
+```javascript
+function display_random_image() 
+{
+    var theImages = [{
+        src: "https://images.pexels.com/photos/1285625/pexels-photo-1285625.jpeg?auto=compress&cs=tinysrgb&w=600",
+        width: "240",
+        height: "160"
+    }, {
+        src: "https://images.pexels.com/photos/164336/pexels-photo-164336.jpeg?auto=compress&cs=tinysrgb&w=600",
+        width: "320",
+        height: "195"
+    }, {
+        src: "https://images.pexels.com/photos/772689/pexels-photo-772689.jpeg?auto=compress&cs=tinysrgb&w=600",
+        width: "500",
+        height: "343"
+    }];
+    var preBuffer = [];
+    for (var i = 0, j = theImages.length; i < j; i++) {
+        preBuffer[i] = new Image();
+        preBuffer[i].src = theImages[i].src;
+        preBuffer[i].width = theImages[i].width;
+        preBuffer[i].height = theImages[i].height;
+    }
+    function getRandomInt(min,max) 
+    {
+        imn = Math.floor(Math.random() * (max - min + 1)) + min;
+        return preBuffer[imn];
+    }  
+    var newImage = getRandomInt(0, preBuffer.length - 1);
+    var images = document.getElementsByTagName('img');
+    var l = images.length;
+    for (var p = 0; p < l; p++) {
+        images[0].parentNode.removeChild(images[0]);
+    }
+    document.body.appendChild(newImage);
+}
+```
+####  Write a JavaScript program to highlight the bold words of the following paragraph, on mouse over a certain link.  
+###### html
+```html
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Get And Style All Tags</title>
+</head>
+
+<body>
+    <p>[<a href="#" onMouseOver="highlight()" onMouseOut="return_normal()">On mouse over here bold words of the
+            following paragraph will be highlighted</a>]</p>
+    <p><strong>We</strong> have just started <strong>this</strong> section for the users (<strong>beginner</strong> to
+        intermediate) who <strong>want</strong> to work with <strong>various</strong> JavaScript
+        <strong>problems</strong> and write scripts online to <strong>test</strong> their JavaScript
+        <strong>skill</strong>.
+    </p>
+<script src="./script.js"></script>
+</body>
+</html>
+```
+###### javascript
+```javascript
+var bold_Items;
+window.onload = getBold_items();
+function getBold_items() {
+  bold_Items = document.getElementsByTagName('strong');
+}
+function highlight() {
+  for (var i = 0; i < bold_Items.length; i++) {
+    bold_Items[i].style.color = "green";
+  }
+}
+function return_normal() {
+  for (var i = 0; i < bold_Items.length; i++) {
+    bold_Items[i].style.color = "black";
+  }
+}
+```
+####  Write a JavaScript program to get the width and height of the window (any time the window is resized). 
+###### html
+```html
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset=utf-8 />
+    <title>Window Size : height and width</title>
+</head>
+<body onload="getSize()" onresize="getSize()">
+    <div id="wh">
+    </div>
+    <script src="./script.js"></script>
+</body>
+</html>
+```
+###### javascript
+```javascript
+function getSize() {
+  var w = document.documentElement.clientWidth;
+  var h = document.documentElement.clientHeight;
+  document.getElementById('wh').innerHTML = "<h1>Width: " + w + " â€¢ Height: " + h + "</h1>";
+}
+```
+# JavaScript drawing  
+#### Write a JavaScript program to draw the following rectangular shape. 
+###### html
+```html
+<!doctype html>
+<html>
+<head>
+    <meta charset=utf-8 />
+    <title>Draw a rectangular shape</title>
+</head>
+<body onload="draw();">
+    <canvas id="canvas" width="150" height="150"></canvas>
+    <script src="./script.js"></script>
+</body>
+</html>
+```
+###### javascript
+```javascript
+function draw() {
+  var canvas = document.getElementById('canvas');
+  if (canvas.getContext) {
+    var context = canvas.getContext('2d');
+
+    context.fillRect(20,20,100,100);
+    context.clearRect(40,40,60,60);
+    context.strokeRect(45,45,50,50);
+  }
+}
+```
+#### Write a JavaScript program to draw a circle.  
+###### html
+```html
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset=utf-8 />
+    <title>Draw a circle</title>
+</head>
+<body onload="draw();">
+    <canvas id="circle" width="150" height="150"></canvas>
+    <script src="./script.js"></script>
+</body>
+</html>
+```
+###### javascript
+```javascript
+function draw() {
+  var canvas = document.getElementById('circle');
+  if (canvas.getContext) {
+    var ctx = canvas.getContext('2d');
+    var X = canvas.width / 2;
+    var Y = canvas.height / 2;
+    var R = 45;
+    ctx.beginPath();
+    ctx.arc(X, Y, R, 0, 2 * Math.PI, false);
+    ctx.lineWidth = 3;
+    ctx.strokeStyle = '#FF0000';
+    ctx.stroke();
+  }
+}
+```
+#### . Write a JavaScript program to draw two intersecting rectangles, one of which has alpha transparency. 
+###### html
+```html
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset=utf-8 />
+    <title>Draw two intersecting rectangles, one of which has alpha transparency</title>
+</head>
+<body onload="draw();">
+    <canvas id="canvas" width="150" height="150"></canvas>
+    <script src="./script.js"></script>
+</body>
+</html>
+```
+###### javascript
+```javascript
+function draw() {
+  var canvas = document.getElementById("canvas");
+  if (canvas.getContext) {
+    var context = canvas.getContext("2d");
+
+    context.fillStyle = "rgb(256,0,0)";
+    context.fillRect(15, 10, 55, 50);
+
+    context.fillStyle = "rgba(0, 0, 200, 0.6)";
+    context.fillRect(35, 30, 55, 50);
+  }
+}
+```
+#### Write a JavaScript program to draw the following right-angled triangle. 
+###### javascript
+```html
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset=utf-8 />
+    <title>Draw a right-angled triangle</title>
+</head>
+<body onload="draw();">
+    <canvas id="canvas" width="150" height="150"></canvas>
+    <script src="./script.js"></script>
+</body>
+</html>
+```
+###### javascript
+```javascript
+function draw() {
+  var canvas = document.getElementById('canvas');
+  if (canvas.getContext) {
+    var context = canvas.getContext('2d');
+
+    context.beginPath();
+    context.moveTo(75, 75);
+    context.lineTo(10, 75);
+    context.lineTo(10, 25);
+    context.fill();
+  }
+}
+```
+#### . Write a JavaScript program to draw the following diagram [use moveto() function]. 
+#### html
+```html
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset=utf-8 />
+    <title>Draw diagram using moveto() function</title>
+</head>
+<body onload="draw();">
+    <canvas id="canvas" width="250" height="250"></canvas>
+    <script src="./script.js"></script>
+</body>
+</html>
+```
+###### javascript
+```javascript
+function draw() 
+{
+  var canvas = document.getElementById('canvas');
+  if (canvas.getContext)
+  {
+    var context = canvas.getContext('2d');
+    context.beginPath();
+    context.arc(75,75,50,0,Math.PI*2,true);
+    context.moveTo(110,75);
+    context.arc(75,75,35,0,Math.PI,false); 
+    context.moveTo(55,65);
+    context.arc(60,65,5,0,Math.PI*2,true); 
+    context.arc(90,65,5,0,Math.PI*2,true);
+    context.stroke();
+  }
+}
+```
+#### Write a JavaScript program to draw the following diagram [diagonal, white to black circles]. 
+###### html
+```html
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Diagonal, White to Black circles</title>
+</head>
+<body>
+    <canvas id="myCanvas" width="1500" height="800">
+        <p>Update your browser!</p>
+    </canvas>
+    <script src="./script.js"></script>
+</body>
+</html>
+```
+###### javascript
+```javascript
+function draw() {
+  var ctx = document.getElementById("myCanvas").getContext("2d");
+  var counter = 0;
+  for (var i = 0; i < 6; i++) {
+    for (var j = 0; j < 6; j++) {
+      //Start from white and goes to black
+      ctx.fillStyle = "rgb(" + Math.floor(255 - 42.5 * i) + "," + Math.floor(255 - 42.5 * i) +
+        "," + Math.floor(255 - 42.5 * j) + ")";
+      ctx.beginPath();
+      if (i === counter && j === counter) {
+        //creates the circles
+        ctx.arc(25 + j * 50, 30 + i * 50, 20, 0, Math.PI * 2, true);
+        ctx.fill();
+        //creates a border around the circles so white one will be vissible
+        ctx.stroke();
+      }
+    }
+    counter++;
+  }
+}
+draw();
+```
+# JavaScript Object
+#### Write a JavaScript program to list the properties of a JavaScript object.
+```javascript
+function keys(obj) 
+ {
+    if (!isObject(obj)) return [];
+    if (Object.keys) return Object.keys(obj);
+    var keys = [];
+    for (var key in obj) if (has(obj, key)) keys.push(key);
+    return keys;
+  }
+function isObject(obj) 
+{
+    var type = typeof obj;
+    return type === 'function' || type === 'object' && !!obj;
+  }
+console.log(keys({red: "#FF0000", green: "#00FF00", white: "#FFFFFF"}));
+```
+#### Write a JavaScript program to delete the rollno property from the following object. Also print the object before or after deleting the property.  
+```javascript
+var student = {
+  name: "David Rayy",
+  sclass: "VI",
+  rollno: 12
+};
+console.log(student);
+delete student.rollno;
+```
+#### Write a JavaScript program to get the length of an JavaScript object. 
+```javascript
+Object.objsize = function (Myobj) {
+  var osize = 0, key;
+  for (key in Myobj) {
+    if (Myobj.hasOwnProperty(key)) osize++;
+  }
+  return osize;
+};
+
+var student = {
+  name: "David Rayy",
+  sclass: "VI",
+  rollno: 12
+};
+var objsize = Object.objsize(student);
+console.log('Size of the current object : ' + objsize);
+```
+####  Write a JavaScript program to display the reading status (i.e. display book name, author name and reading status) of the following books. 
+```javascript
+var library = [
+  {
+    title: 'Bill Gates',
+    author: 'The Road Ahead',
+    readingStatus: true
+  },
+  {
+    title: 'Steve Jobs',
+    author: 'Walter Isaacson',
+    readingStatus: true
+  },
+  {
+    title: 'Mockingjay: The Final Book of The Hunger Games',
+    author: 'Suzanne Collins',
+    readingStatus: false
+  }];
+
+for (var i = 0; i < library.length; i++) {
+  var book = "'" + library[i].title + "'" + ' by ' + library[i].author + ".";
+  if (library[i].readingStatus) {
+    console.log("Already read " + book);
+  } else {
+    console.log("You still need to read " + book);
+  }
+}
+```
+#### Write a JavaScript program to get the volume of a Cylinder with four decimal places using object classes. 
+```javascript
+function CylinderVolume(cyl_height, cyl_diameter) {
+  this.cyl_height = cyl_height;
+  this.cyl_diameter = cyl_diameter;
+}
+CylinderVolume.prototype.Volume = function () {
+  var radius = this.cyl_diameter / 2;
+  return this.cyl_height * Math.PI * radius * radius;
+};
+var cyl = new CylinderVolume(7, 4);
+// Volume of the cylinder with four decimal places.
+console.log('volume = ' + cyl.Volume().toFixed(4));
+```
+#### Write a Bubble Sort algorithm in JavaScript. 
+```javascript
+function bubbleSort(arr) {
+  var is_sorted = false;
+  while (!is_sorted) {
+    is_sorted = true;
+    for (var n = 0; n < arr.length - 1; n++) {
+      if (arr[n] > arr[n + 1]) {
+        var x = arr[n + 1];
+        arr[n + 1] = arr[n];
+        arr[n] = x;
+        is_sorted = false;
+      }
+    }
+  }
+  return arr;
+}
+console.log(bubbleSort([6, 4, 0, 3, -2, 1]));
+```
+####  Write a JavaScript program which returns a subset of a string. 
+```javascript
+function subString(str) {
+  var subset = [];
+  for (var m = 0; m < str.length; m++) {
+    for (var n = m + 1; n <= str.length; n++) {
+      subset.push(str.slice(m, n));
+    }
+  }
+  return subset;
+}
+console.log(subString("dog"));
+```
+#### Write a JavaScript program to create a Clock.   
+```javascript
+function clock() {
+  this.cur_date = new Date();
+  this.hours = this.cur_date.getHours();
+  this.minutes = this.cur_date.getMinutes();
+  this.seconds = this.cur_date.getSeconds();
+}
+clock.prototype.run = function () {
+  setInterval(this.update.bind(this), 1000);
+};
+clock.prototype.update = function () {
+  this.updateTime(1);
+  console.log(this.hours + ":" + this.minutes + ":" + this.seconds);
+};
+clock.prototype.updateTime = function (secs) {
+  this.seconds += secs;
+  if (this.seconds >= 60) {
+    this.minutes++;
+    this.seconds = 0;
+  }
+  if (this.minutes >= 60) {
+    this.hours++;
+    this.minutes = 0;
+  }
+  if (this.hours >= 24) {
+    this.hours = 0;
+  }
+};
+var clock = new clock();
+clock.run();
+```
+####  Write a JavaScript program to calculate the area and perimeter of a circle.  
+```javascript
+function areaOfCircle(radius) {
+  this.radius = radius;
+  this.area = function () {
+    return Math.PI * this.radius * this.radius;
+  };
+  this.perimeter = function () {
+    return 2 * Math.PI * this.radius;
+  };
+}
+var c = new areaOfCircle(3);
+console.log('Area =', c.area().toFixed(2));
+console.log('perimeter =', c.perimeter().toFixed(2));
+```
+#### Write a JavaScript program to sort an array of JavaScript objects.   
+```javascript
+var library = [
+  {
+    title: 'Bill Gates',
+    author: 'The Road Ahead',
+    libraryID: 1254
+  },
+  {
+    title: 'Steve Jobs',
+    author: 'Walter Isaacson',
+    libraryID: 4264
+  },
+  {
+    title: 'Mockingjay: The Final Book of The Hunger Games',
+    author: 'Suzanne Collins',
+    libraryID: 3245
+  }];
+
+function sortObject (field_name, reverse, initial) {
+
+  var key = initial ?
+    function (x) {
+      return initial(x[field_name]);
+    } :
+    function (x) {
+      return x[field_name];
+    };
+
+  reverse = !reverse ? 1 : -1;
+
+  return function (x, y) {
+    return x = key(x), y = key(y), reverse * ((x > y) - (y > x));
+  };
+};
+
+var newobj = library.sort(sortObject('libraryID', true, parseInt));
+console.log(newobj);
+```
+#### Write a JavaScript function to print all the methods in an JavaScript object. 
+```javascript
+function FindAllMethods(obj) {
+  return Object.getOwnPropertyNames(obj).filter(function (property) {
+    return typeof obj[property] == "function";
+  });
+} 
+console.log(FindAllMethods(Math));
+console.log(FindAllMethods(Array));
+function all_properties(obj) {
+  return Object.getOwnPropertyNames(obj);
+}
+console.log(all_properties(Math));
+console.log(all_properties(Array));
+```
+####  Write a JavaScript function to parse an URL.   
+```javascript
+function parseUrl(url) {
+  var a = document.createElement('a');
+  a.href = url;
+  return {
+      source: url,
+      protocol: a.protocol.replace(':', ''),
+      host: a.hostname,
+      port: a.port,
+      query: a.search,
+      params: (function () {
+          var ret = {},
+              seg = a.search.replace(/^\?/, '').split('&'),
+              len = seg.length,
+              i = 0,
+              s;
+          for (; i < len; i++) {
+              if (!seg[i]) {
+                  continue;
+              }
+              s = seg[i].split('=');
+              ret[s[0]] = s[1];
+          }
+          return ret;
+      })(),
+      file: (a.pathname.match(/\/([^\/?#]+)$/i) || [, ''])[1],
+      hash: a.hash.replace('#', ''),
+      path: a.pathname.replace(/^([^\/])/, '/$1'),
+      relative: (a.href.match(/tps?:\/\/[^\/]+(.+)/) || [, ''])[1],
+      segments: a.pathname.replace(/^\//, '').split('/')
+  };
+}
+console.log(parseUrl('https://www.w3schools.com/js/js_intro.asp'));
+```
+# JavaScript validation  
+#### Write a JavaScript function to validate whether a given value type is boolean or not. 
+```javascript
+function isBoolean(value) {
+  return value === true || value === false || toString.call(value) === '[object Boolean]';
+}
+console.log(isBoolean(true));
+console.log(isBoolean('bar'));
+```
+#### Write a JavaScript function to validate whether a given value type is error or not. 
+```javascript
+function isError(input) {
+  return input instanceof Error || toString.call(input) === '[object Error]';
+}
+console.log(isError(new Error('foo')));
+console.log(isError(100));
+console.log(isError('foo'));
+```
+#### Write a JavaScript function to validate whether a given value type is NaN or not. 
+```javascript
+function isNaN(val) {
+  return val !== val;
+}
+console.log(isNaN(NaN));
+console.log(isNaN('bar'));
+```
+#### Write a JavaScript function to validate whether a given value type is null or not.   
+```javascript
+function is_null(val) {
+  return val === null;
+}
+console.log(is_null(null));
+console.log(is_null('bar'));
+```
+#### Write a JavaScript function to validate whether a given value is number or not.     
+```javascript
+function is_number(value) {
+  return !isNaN(value) && toString.call(value) === '[object Number]';
+}
+console.log(is_number(NaN));
+console.log(is_number(42.32));
+console.log(is_number(72));
+```
+#### Write a JavaScript function to validate whether a given value is object or not.      
+```javascript
+function isObject(value) {
+  var datatype = typeof value;
+  return datatype === 'function' || datatype === 'object' && !!value;
+}
+console.log(isObject({ name: 'Robert' }));
+console.log(isObject('bar'));
+console.log(isObject(72));
+```
+####  Write a JavaScript function to validate whether a given value type is pure json object or not.      
+```javascript
+function isJson(value) {
+  return toString.call(value) === '[object Object]';
+}
+console.log(isJson({ name: 'Robert' }));
+console.log(isJson('bar'));
+console.log(isJson(72));
+```
+#### Write a JavaScript function to validate whether a given value is RegExp or not.      
+```javascript
+function isRegularExp(value) {
+  return toString.call(value) === '[object RegExp]';
+}
+console.log(isRegularExp(/test/));
+console.log(isRegularExp('bar'));
+console.log(isRegularExp(72));
+```
+#### Write a JavaScript function to validate whether a given value type is char or not.      
+```javascript
+function isChar(value) {
+  if (Object.prototype.toString.call(value) !== '[object String]')
+    return false;
+  return value && value.length === 1;
+}
+console.log(isChar('f'));
+console.log(isChar('hello'));
+```
+#### Write a JavaScript function to check whether given value types are same or not.       
+```javascript
+function isSameType(value1, value2) {
+  if (isNaN(value1) || isNaN(value2)) {
+    return isNaN(value1) === isNaN(value2);
+  }
+  return toString.call(value1) === toString.call(value2);
+}
+function isNaN(val) {
+  return val !== val;
+}
+console.log(isSameType('12', 100));
+console.log(isSameType('12', '100'));
+console.log(isSameType(12, 100));
+```
+# Imp Questions
+#### The Movie Database
+1. Create an object to store the following information about your favorite movie: title (a 
+string), duration (a number), and stars (an array of strings). 
+2. Create a function to print out the movie information like so: "Puff the Magic Dragon lasts for 30 
+minutes. Stars: Puff, Jackie, Living Sneezes."
+```javascript
+var favoriteMovie = {
+  title: "Puff the Magic Dragon",
+  duration: 30,
+  stars: ["Puff", "Jackie", "Living Sneezes"]
+};
+function printMovieInfo(movie) {
+  var starsList = movie.stars.join(", ");
+  console.log(movie.title + " lasts for " + movie.duration + " minutes. Stars: " + starsList + ".");
+}
+printMovieInfo(favoriteMovie);
+```
+#### The Reading List
+1. Create an array of objects, where each object describes a book and has properties for the title (a 
+string), author (a string), and alreadyRead (a boolean indicating if you read it yet). 
+2. Iterate through the array of books. For each book, log the book title and book author like so: "The 
+Hobbit by J.R.R. Tolkien". 
+3. Now use an if/else statement to change the output depending on whether you read it yet or not. If you 
+read it, log a string like 'You already read "The Hobbit" by J.R.R. Tolkien', and if not, log a string like 
+'You still need to read "The Lord of the Rings" by J.R.R. Tolkien.' 
+```javascript
+var library = [
+  {
+      title: "The Hobbit",
+      author: "J.R.R. Tolkien",
+      alreadyRead: true
+  },
+  {
+      title: "The Lord of the Rings",
+      author: "J.R.R. Tolkien",
+      alreadyRead: false
+  },
+  {
+      title: "Harry Potter and the Philosopher's Stone",
+      author: "J.K. Rowling",
+      alreadyRead: true
+  }
+];
+for (var i = 0; i < library.length; i++) {
+  var book = library[i];
+  console.log(book.title + " by " + book.author);
+  if (book.alreadyRead) {
+      console.log('You already read "' + book.title + '" by ' + book.author + '.');
+  } else {
+      console.log('You still need to read "' + book.title + '" by ' + book.author + '.');
+  }
+} 
+```
+#### The Recipe Card
+1. Create an object to hold information on your favorite recipe. It should have properties for title (a 
+string), servings (a number), and ingredients (an array of strings). 
+2. On separate lines (one console.log statement for each), log the recipe information so it looks like: 
+ Mole 
+ Serves: 2 
+ Ingredients: 
+ cinnamon 
+ cumin 
+ cocoa
+```javascript
+var favoriteRecipe = {
+  title: "Mole",
+  servings: 2,
+  ingredients: ["cinnamon", "cumin", "cocoa"]
+};
+console.log(favoriteRecipe.title);
+console.log("Serves: " + favoriteRecipe.servings);
+console.log("Ingredients:");
+for (var i = 0; i < favoriteRecipe.ingredients.length; i++) {
+  console.log("- " + favoriteRecipe.ingredients[i]);
+}
+```
+#### The Fortune Teller
+Why pay a fortune teller when you can just program your fortune yourself? 
+1. Write a function named tellFortune that: 
+  1.1 takes 4 arguments: number of children, partner's name, geographic location, job title. 
+  1.2 outputs your fortune to the screen like so: "You will be a X in Y, and married to Z with N kids." 
+2. Call that function 3 times with 3 different values for the arguments.
+```javascript
+function tellFortune(numChildren, partnerName, geoLocation, jobTitle) {
+  var fortune = "You will be a " + jobTitle + " in " + geoLocation + ", and married to " + partnerName + " with " + numChildren + " kids.";
+  console.log(fortune);
+}
+tellFortune(2, "Alice", "New York", "Software Engineer");
+tellFortune(3, "Bob", "London", "Graphic Designer");
+tellFortune(1, "Charlie", "Paris", "Chef");
+```
+#### The Age Calculator
+Forgot how old you are? Calculate it! 
+1. Write a function named calculateAge that: 
+   1.1 takes 2 arguments: birth year, current year. 
+   1.2 calculates the 2 possible ages based on those years. 
+   1.3 outputs the result to the screen like so: "You are either NN or NN" 
+2. Call the function three times with different sets of values. 
+3. Bonus: Figure out how to get the current year in JavaScript instead of passing it in.
+```javascript
+function calculateAge(birthYear, currentYear) {
+  var age1 = currentYear - birthYear;
+  var age2 = age1 - 1;
+  console.log("You are either " + age2 + " or " + age1);
+}
+var currentYear = new Date().getFullYear();
+calculateAge(1990, currentYear);
+calculateAge(1985, currentYear);
+calculateAge(2000, currentYear);
+```
+#### The Lifetime Supply Calculator 
+Ever wonder how much a "lifetime supply" of your favorite snack is? Wonder no more! 
+1. Write a function named calculateSupply that: 
+   1.1 takes 2 arguments: age, amount per day. 
+   1.2 calculates the amount consumed for rest of the life (based on a constant max age). 
+   1.3 outputs the result to the screen like so: "You will need NN to last you until the ripe old age of X" 
+2. Call that function three times, passing in different values each time. 
+3. Bonus: Accept floating point values for amount per day, and round the result to a round number.
+```javascript
+function calculateSupply(currentAge, amountPerDay) {
+  const maxAge = 100;
+  const yearsRemaining = maxAge - currentAge;
+  const amountPerYear = amountPerDay * 365.25; // Account for leap years
+  const totalSupply = Math.round(yearsRemaining * amountPerYear);
+  console.log("You will need " + totalSupply + " to last you until the ripe old age of " + maxAge);
+}
+
+// Call the function three times with different values
+calculateSupply(25, 2.5);
+calculateSupply(40, 3);
+calculateSupply(60, 1.2);
+```
+#### The Geometrizer 
+Create 2 functions that calculate properties of a circle, using the definitions here. 
+Create a function called calcCircumfrence : 
+Pass the radius to the function. 
+Calculate the circumference based on the radius, and output "The circumference is NN". 
+Create a function called calcArea : 
+Pass the radius to the function. 
+Calculate the area based on the radius, and output "The area is NN".
+```javascript
+function calcCircumference(radius) {
+  var circumference = 2 * Math.PI * radius;
+  console.log("The circumference is " + circumference.toFixed(2));
+}
+function calcArea(radius) {
+  var area = Math.PI * Math.pow(radius, 2);
+  console.log("The area is " + area.toFixed(2));
+}
+
+calcCircumference(5);
+calcCircumference(10);
+calcCircumference(15);
+calcArea(5);
+calcArea(10);
+calcArea(15);
+```
+#### The Temperature Converter 
+It's hot out! Let's make a converter based on the steps here. 
+Create a function called celsiusToFahrenheit : 
+Store a celsius temperature into a variable. 
+Convert it to fahrenheit and output "NN°C is NN°F". 
+Create a function called fahrenheitToCelsius : 
+Now store a fahrenheit temperature into a variable. 
+Convert it to celsius and output "NN°F is NN°C. 
+```javascript
+function celsiusToFahrenheit(celsius) {
+  var fahrenheit = (celsius * 9/5) + 32;
+  console.log(celsius + "°C is " + fahrenheit.toFixed(2) + "°F");
+}
+
+function fahrenheitToCelsius(fahrenheit) {
+  var celsius = (fahrenheit - 32) * 5/9;
+  console.log(fahrenheit + "°F is " + celsius.toFixed(2) + "°C");
+}
+
+celsiusToFahrenheit(0);
+celsiusToFahrenheit(25);
+celsiusToFahrenheit(100);
+fahrenheitToCelsius(32);
+fahrenheitToCelsius(77);
+fahrenheitToCelsius(212);
+```
+# Other questions 
+####  Create an HTML page. Add JavaScript that includes 2 prompts for integer values from the user. Add JavaScript to add these 2 values together and display the result in an alert box.  
+```javascript
+var num1 = prompt("Enter the first integer:");
+var num2 = prompt("Enter the second integer:");
+var int1 = parseInt(num1, 10);
+var int2 = parseInt(num2, 10);
+if (!isNaN(int1) && !isNaN(int2)) {
+    var sum = int1 + int2;
+    alert("The sum of " + int1 + " and " + int2 + " is " + sum + ".");
+} else {
+    alert("Please enter valid integers.");
+}
+```
+####  Write a JavaScript function that returns a passed string with letters in alphabetical order.
+```javascript
+function alphabetizeString(str) {
+  var charArray = str.split('');
+  charArray.sort();
+  var sortedStr = charArray.join('');
+  return sortedStr;
+}
+console.log(alphabetizeString("javascript")); 
+console.log(alphabetizeString("hello")); 
+console.log(alphabetizeString("world"));
+```
+#### Write a JavaScript function to extract unique characters from a string 
+“thequickbrownfoxjumpsoverthelazydog”. 
+```javascript
+function extractUniqueCharacters(str) {
+  var uniqueChars = new Set();
+  for (var i = 0; i < str.length; i++) {
+      uniqueChars.add(str[i]);
+  }
+  var uniqueStr = Array.from(uniqueChars).join('');
+  return uniqueStr;
+}
+console.log(extractUniqueCharacters("thequickbrownfoxjumpsoverthelazydog"));
+```
+#### Create an HTML page. Add a JavaScript function to convert local time and date to UTC and display the result. Add a button to your page that calls this function. Add JavaScript to create a timer that displays the current date and time after a specified amount of time delay. Use a button (or other event) to call the timer function 
+###### html
+```html
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Local to UTC Time Converter and Timer</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            padding: 20px;
+        }
+        #currentTime, #utcTime, #delayedTime {
+            margin-top: 20px;
+        }
+    </style>
+</head>
+<body>
+    <h1>Local to UTC Time Converter and Timer</h1>
+    <button onclick="convertToUTC()">Convert Local Time to UTC</button>
+    <div id="utcTime"></div>
+
+    <button onclick="startTimer()">Start Timer</button>
+    <div id="currentTime"></div>
+    <div id="delayedTime"></div>
+
+    <script src="script.js"></script>
+</body>
+</html>
+```
+###### javascript
+```javascript
+function convertToUTC() {
+  var now = new Date();
+  var utcString = now.toUTCString();
+  document.getElementById('utcTime').innerText = 'Current UTC Time: ' + utcString;
+}
+
+function displayCurrentTime() {
+  var now = new Date();
+  document.getElementById('currentTime').innerText = 'Current Local Time: ' + now.toString();
+}
+
+function displayDelayedTime() {
+  var now = new Date();
+  document.getElementById('delayedTime').innerText = 'Delayed Local Time: ' + now.toString();
+}
+
+function startTimer() {
+  var delay = 5000; 
+  displayCurrentTime();
+  setTimeout(displayDelayedTime, delay);
+}
+```
+#### Create a basic page in html that consists of one image. Using the onClick event handler, when the user clicks on the image, change it to a unique image Reconfigure the previous question to execute using a function. Specifically, when the user clicks on the button, the onClick event handler calls a function. The function then executes the statement that changes the background color to blue. 
+###### html
+```html
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Image Click and Background Change</title>
+    <style>
+        body {
+            text-align: center;
+            padding: 50px;
+        }
+        #changeColorButton {
+            margin-top: 20px;
+            padding: 10px 20px;
+            font-size: 16px;
+        }
+    </style>
+</head>
+<body>
+    <h1>Image Click and Background Change</h1>
+
+    <img id="myImage" src="https://images.pexels.com/photos/1010640/pexels-photo-1010640.jpeg?auto=compress&cs=tinysrgb&w=600" alt="Initial Image" width="300" onclick="changeImage()">
+    <br>
+    <button id="changeColorButton" onclick="changeBackgroundColor()">Change Background Color</button>
+
+    <script src="script.js"></script>
+</body>
+</html>
+```
+###### javascript
+```javascript
+function changeImage() {
+  var image = document.getElementById('myImage');
+  image.src = 'https://images.pexels.com/photos/163864/santorini-oia-greece-travel-163864.jpeg?auto=compress&cs=tinysrgb&w=600'; 
+}
+
+function changeBackgroundColor() {
+  document.body.style.backgroundColor = 'blue';
+}
+```
+#### Create an HTML page that includes 2 paragraphs of text. Add JavaScript to insert a new paragraph in between the other 2. Add JavaScript to use an event to change the style of the new paragraph using either the style property or the className property. Add JavaScript to use an event to change the style of the new paragraph back to the original. 
+###### html
+```html
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Insert and Style Paragraph</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            padding: 20px;
+        }
+        .styled {
+            color: blue;
+            font-weight: bold;
+        }
+        .original {
+            color: black;
+            font-weight: normal;
+        }
+    </style>
+</head>
+<body>
+    <p id="para1">This is the first paragraph.</p>
+    <p id="para2">This is the second paragraph.</p>
+    
+    <button onclick="insertParagraph()">Insert Paragraph</button>
+    <button onclick="styleParagraph()">Style Paragraph</button>
+    <button onclick="revertStyle()">Revert Style</button>
+
+    <script src="script.js"></script>
+</body>
+</html>
+```
+###### javascript
+```javascript
+function insertParagraph() {
+  var newPara = document.createElement('p');
+  newPara.id = 'newPara';
+  newPara.className = 'original';
+  newPara.textContent = 'This is the new paragraph inserted between the first and second paragraphs.';
+  
+  var para1 = document.getElementById('para1');
+  var para2 = document.getElementById('para2');
+  document.body.insertBefore(newPara, para2);
+}
+
+function styleParagraph() {
+  var newPara = document.getElementById('newPara');
+  if (newPara) {
+      newPara.className = 'styled';
+  } else {
+      alert('Please insert the new paragraph first.');
+  }
+}
+
+function revertStyle() {
+  var newPara = document.getElementById('newPara');
+  if (newPara) {
+      newPara.className = 'original';
+  } else {
+      alert('Please insert the new paragraph first.');
+  }
+}
+```
+#### Create a slide show of 5 images.  
+###### html
+```html
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Slideshow Example</title>
+</head>
+<style>
+.slideshow-container {
+    max-width: 600px;
+    position: relative;
+    margin: auto;
+    overflow: hidden;
+}
+.mySlides {
+    display: none;
+    width: 100%;
+}
+.fade {
+    animation-name: fade;
+    animation-duration: 1.5s;
+}
+@keyframes fade {
+    from {opacity: .4}
+    to {opacity: 1}
+}
+</style>
+<body>
+<div class="slideshow-container">
+    <div class="mySlides fade">
+        <img src="https://images.pexels.com/photos/4817608/pexels-photo-4817608.png?auto=compress&cs=tinysrgb&w=600" style="width:100%">
+    </div>
+
+    <div class="mySlides fade">
+        <img src="https://images.pexels.com/photos/1285625/pexels-photo-1285625.jpeg?auto=compress&cs=tinysrgb&w=600" style="width:100%">
+    </div>
+
+    <div class="mySlides fade">
+        <img src="https://images.pexels.com/photos/164041/pexels-photo-164041.jpeg?auto=compress&cs=tinysrgb&w=600" style="width:100%">
+    </div>
+
+    <div class="mySlides fade">
+        <img src="https://images.pexels.com/photos/164336/pexels-photo-164336.jpeg?auto=compress&cs=tinysrgb&w=600" style="width:100%">
+    </div>
+
+    <div class="mySlides fade">
+        <img src="https://images.pexels.com/photos/163864/santorini-oia-greece-travel-163864.jpeg?auto=compress&cs=tinysrgb&w=600" style="width:100%">
+    </div>
+</div>
+<script src="script.js"></script> 
+</body>
+</html>
+```
+###### javascript
+```javascript
+var slideIndex = 0;
+showSlides();
+
+function showSlides() {
+    var slides = document.getElementsByClassName("mySlides");
+    for (var i = 0; i < slides.length; i++) {
+        slides[i].style.display = "none";
+    }
+    slideIndex++;
+    if (slideIndex > slides.length) {
+        slideIndex = 1;
+    }
+    slides[slideIndex - 1].style.display = "block";
+    setTimeout(showSlides, 2000); // Change image every 2 seconds
+}
+```
+#### Use previous question images and add two image button (back and forward). Back button allows the user to move backward through the slide show one slide at a time. When the user reaches the end (or beginning when clicking on the back button) of the slide show, the slide show should not wrap around to the beginning (or end) and forward button should show next image. When at the beginning of the slide show, only the forward image button should be visible. Conversely, when at the end, only the back image button should be visible. 
+###### html
+```html
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Slideshow Example</title>
+</head>
+<style>
+    .slideshow-container {
+    max-width: 600px;
+    position: relative;
+    margin: auto;
+    overflow: hidden;
+}
+
+.mySlides {
+    display: none;
+    width: 100%;
+}
+
+.fade {
+    animation-name: fade;
+    animation-duration: 1.5s;
+}
+
+@keyframes fade {
+    from {opacity: .4}
+    to {opacity: 1}
+}
+</style>
+<body>
+<div class="slideshow-container">
+    <div class="mySlides fade">
+        <img src="https://images.pexels.com/photos/4817608/pexels-photo-4817608.png?auto=compress&cs=tinysrgb&w=600" style="width:100%">
+    </div>
+
+    <div class="mySlides fade">
+        <img src="https://images.pexels.com/photos/1285625/pexels-photo-1285625.jpeg?auto=compress&cs=tinysrgb&w=600" style="width:100%">
+    </div>
+
+    <div class="mySlides fade">
+        <img src="https://images.pexels.com/photos/164041/pexels-photo-164041.jpeg?auto=compress&cs=tinysrgb&w=600" style="width:100%">
+    </div>
+
+    <div class="mySlides fade">
+        <img src="https://images.pexels.com/photos/164336/pexels-photo-164336.jpeg?auto=compress&cs=tinysrgb&w=600" style="width:100%">
+    </div>
+
+    <div class="mySlides fade">
+        <img src="https://images.pexels.com/photos/163864/santorini-oia-greece-travel-163864.jpeg?auto=compress&cs=tinysrgb&w=600" style="width:100%">
+    </div>
+    <!-- Navigation buttons -->
+    <button id="backBtn" onclick="plusSlides(-1)" style="display:none">&#10094; Back</button>
+    <button id="forwardBtn" onclick="plusSlides(1)">Forward &#10095;</button>
+</div>
+<script src="script.js"></script> 
+</body>
+</html>
+```
+###### javascript
+```javascript
+var slideIndex = 1;
+showSlides(slideIndex);
+
+function plusSlides(n) {
+    showSlides(slideIndex += n);
+}
+
+function showSlides(n) {
+    var slides = document.getElementsByClassName("mySlides");
+    var backBtn = document.getElementById("backBtn");
+    var forwardBtn = document.getElementById("forwardBtn");
+    if (n > slides.length) {
+        slideIndex = slides.length;
+    }
+    if (n < 1) {
+        slideIndex = 1;
+    }
+
+    for (var i = 0; i < slides.length; i++) {
+        slides[i].style.display = "none";
+    }
+    slides[slideIndex - 1].style.display = "block";
+    if (slideIndex === 1) {
+        backBtn.style.display = "none";
+        forwardBtn.style.display = "block";
+    } else if (slideIndex === slides.length) {
+        backBtn.style.display = "block";
+        forwardBtn.style.display = "none";
+    } else {
+        backBtn.style.display = "block";
+        forwardBtn.style.display = "block";
+    }
+}
+```
+#### Create a basic page. Using the setTimeout() method, create an animation on the page. Allow the user to stop the animation by placing the cursor on any marble. Allow the user to restart the animation by removing the cursor from that marble. 
+###### html
+```html
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Animation Example</title>
+    <style>
+        .marble {
+            width: 50px;
+            height: 50px;
+            border-radius: 50%;
+            background-color: #3498db;
+            position: absolute;
+            animation: move 2s linear infinite;
+        }
+        @keyframes move {
+            0% { top: 0; left: 0; }
+            50% { top: 100px; left: 100px; }
+            100% { top: 0; left: 0; }
+        }
+    </style>
+</head>
+<body>
+    <div class="marble" id="marble1"></div>
+    <div class="marble" id="marble2"></div>
+    <div class="marble" id="marble3"></div>
+
+    <script src="script.js"></script> 
+</body>
+</html>
+```
+###### javascript
+```javascript
+function stopAnimation() {
+  var marbles = document.querySelectorAll('.marble');
+  marbles.forEach(function(marble) {
+      marble.style.animationPlayState = 'paused';
+  });
+}
+function restartAnimation() {
+  var marbles = document.querySelectorAll('.marble');
+  marbles.forEach(function(marble) {
+      marble.style.animationPlayState = 'running';
+  });
+}
+document.querySelectorAll('.marble').forEach(function(marble) {
+  marble.addEventListener('mouseover', stopAnimation);
+  marble.addEventListener('mouseout', restartAnimation);
+});
+```
+#### Create a basic page in html. Then, display the following items in the page using only one or more document.write() statements: 
+1. Information about the web browser that the user is viewing this page 
+with. 
+2. The height and width of the user's monitor, i.e. the resolution 
+3. The date that the page was created or last modified.
+###### html
+```html
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Basic Page</title>
+</head>
+<body>
+    <h1>Basic Page</h1>
+    <div id="browserInfo"></div>
+    <div id="monitorResolution"></div>
+    <div id="pageDate"></div>
+    
+    <script src="script.js" defer></script> 
+</body>
+</html>
+```
+###### javascript
+```javascript
+function displayBrowserInfo() {
+  var browserInfo = document.getElementById('browserInfo');
+  browserInfo.innerHTML = "<h2>Browser Information:</h2>" +
+    "<p>User Agent: " + navigator.userAgent + "</p>" +
+    "<p>Browser Version: " + navigator.appVersion + "</p>" +
+    "<hr>";
+}
+function displayMonitorResolution() {
+  var monitorResolution = document.getElementById('monitorResolution');
+  monitorResolution.innerHTML = "<h2>Monitor Resolution:</h2>" +
+    "<p>Width: " + screen.width + " pixels</p>" +
+    "<p>Height: " + screen.height + " pixels</p>" +
+    "<hr>";
+}
+function displayPageDate() {
+  var pageDate = document.getElementById('pageDate');
+  var lastModified = new Date(document.lastModified);
+  pageDate.innerHTML = "<h2>Page Date Information:</h2>" +
+    "<p>Last Modified: " + lastModified.toLocaleString() + "</p>" +
+    "<hr>";
+}
+
+displayBrowserInfo();
+displayMonitorResolution();
+displayPageDate();
+```
+#### Create a basic page in html that displays 2 images. When the user places a cursor over any image, replace the image with a different image. When the user removes the cursor from the image and return it to its original state. 
+###### html
+```html
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Image Switch</title>
+    <style>
+        .image {
+            width: 300px;
+            height: auto;
+        }
+    </style>
+</head>
+<body>
+    <h1>Image Switch Example</h1>
+    <img id="image1" class="image" src="original_image1.jpg" onmouseover="changeImage(this)" onmouseout="restoreImage(this)">
+    <img id="image2" class="image" src="original_image2.jpg" onmouseover="changeImage(this)" onmouseout="restoreImage(this)">
+
+    <script src="script.js"></script> 
+</body>
+</html>
+```
+###### javascript
+```javascript
+function changeImage(img) {
+  if (img.id === 'image1') {
+      img.src = 'https://images.pexels.com/photos/347141/pexels-photo-347141.jpeg?auto=compress&cs=tinysrgb&w=600'; 
+  } else if (img.id === 'image2') {
+      img.src = 'https://images.pexels.com/photos/163864/santorini-oia-greece-travel-163864.jpeg?auto=compress&cs=tinysrgb&w=600'; 
+  }
+}
+function restoreImage(img) {
+  if (img.id === 'image1') {
+      img.src = 'https://images.pexels.com/photos/1029021/pexels-photo-1029021.jpeg?auto=compress&cs=tinysrgb&w=600'; 
+  } else if (img.id === 'image2') {
+      img.src = 'https://images.pexels.com/photos/161275/santorini-travel-holidays-vacation-161275.jpeg?auto=compress&cs=tinysrgb&w=600'; 
+  }
+}
+```
+#### Create a signup form with validation before submit 
+###### html
+```html
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Signup Form with Validation</title>
+    <style>
+        .error {
+            color: red;
+        }
+    </style>
+</head>
+<body>
+    <h1>Signup Form</h1>
+    <form id="signupForm" onsubmit="return validateForm()">
+        <label for="username">Username:</label><br>
+        <input type="text" id="username" name="username" required><br>
+        <span id="usernameError" class="error"></span><br>
+
+        <label for="email">Email:</label><br>
+        <input type="email" id="email" name="email" required><br>
+        <span id="emailError" class="error"></span><br>
+
+        <label for="password">Password:</label><br>
+        <input type="password" id="password" name="password" required><br>
+        <span id="passwordError" class="error"></span><br>
+
+        <label for="confirmPassword">Confirm Password:</label><br>
+        <input type="password" id="confirmPassword" name="confirmPassword" required><br>
+        <span id="confirmPasswordError" class="error"></span><br>
+
+        <input type="submit" value="Sign Up">
+    </form>
+
+    <script src="script.js"></script> 
+</body>
+</html>
+```
+###### javascript
+```javascript
+function validateForm() {
+  var username = document.getElementById('username').value.trim();
+  var email = document.getElementById('email').value.trim();
+  var password = document.getElementById('password').value;
+  var confirmPassword = document.getElementById('confirmPassword').value;
+
+  document.getElementById('usernameError').textContent = '';
+  document.getElementById('emailError').textContent = '';
+  document.getElementById('passwordError').textContent = '';
+  document.getElementById('confirmPasswordError').textContent = '';
+
+  var isValid = true;
+
+  if (username.length < 3 || username.length > 20) {
+      document.getElementById('usernameError').textContent = 'Username must be between 3 and 20 characters';
+      isValid = false;
+  }
+  if (!validateEmail(email)) {
+      document.getElementById('emailError').textContent = 'Invalid email format';
+      isValid = false;
+  }
+  if (password.length < 6) {
+      document.getElementById('passwordError').textContent = 'Password must be at least 6 characters';
+      isValid = false;
+  }
+  if (password !== confirmPassword) {
+      document.getElementById('confirmPasswordError').textContent = 'Passwords do not match';
+      isValid = false;
+  }
+  return isValid;
+}
+function validateEmail(email) {
+  var re = /\S+@\S+\.\S+/;
+  return re.test(email);
+}
+```
+#### Create a basic page in html that displays text and an image. Track how many times a user has visited your page by storing this information in a cookie. Display this information to the user, e.g. You have visited x number of times! The current visit should be included in this number. Display the date and time of the user's last visit, e.g. "You lasted visted on..." If this is the user's first visit, display e.g. "You have never visited before" instead. 
+###### html
+```html
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Visit Tracker</title>
+</head>
+<body>
+    <h1>Welcome to Visit Tracker Page</h1>
+    <p id="visitInfo"></p>
+    <p id="lastVisitedInfo"></p>
+    <img src="https://images.pexels.com/photos/161275/santorini-travel-holidays-vacation-161275.jpeg?auto=compress&cs=tinysrgb&w=600" alt="Example Image" width="300">
+</body>
+<script src="script.js"></script> 
+</html>
+```
+###### javascript
+```javascript
+function setCookie(cookieName, cookieValue, expiryDays) {
+  var d = new Date();
+  d.setTime(d.getTime() + (expiryDays * 24 * 60 * 60 * 1000));
+  var expires = "expires=" + d.toUTCString();
+  document.cookie = cookieName + "=" + cookieValue + ";" + expires + ";path=/";
+}
+
+function getCookie(cookieName) {
+  var name = cookieName + "=";
+  var decodedCookie = decodeURIComponent(document.cookie);
+  var cookieArray = decodedCookie.split(';');
+  for (var i = 0; i < cookieArray.length; i++) {
+    var cookie = cookieArray[i].trim();
+    if (cookie.indexOf(name) == 0) {
+      return cookie.substring(name.length, cookie.length);
+    }
+  }
+  return "";
+}
+
+function displayVisitInfo() {
+  var visitCount = getCookie("visitCount");
+  var lastVisited = getCookie("lastVisited");
+
+  if (visitCount === "") {
+    visitCount = 1;
+    setCookie("visitCount", visitCount, 30);
+    document.getElementById("visitInfo").textContent = "You have visited 1 time!";
+    document.getElementById("lastVisitedInfo").textContent = "This is your first visit.";
+  } else {
+    visitCount = parseInt(visitCount) + 1;
+    setCookie("visitCount", visitCount, 30);
+    document.getElementById("visitInfo").textContent = "You have visited " + visitCount + " times!";
+    if (lastVisited !== "") {
+      document.getElementById("lastVisitedInfo").textContent = "You last visited on " + lastVisited;
+    } else {
+      document.getElementById("lastVisitedInfo").textContent = "Welcome back! It seems this is your first time.";
+    }
+  }
+
+  var currentDate = new Date().toUTCString();
+  setCookie("lastVisited", currentDate, 30);
+}
+displayVisitInfo();
+```
+#### Create a "Mad-libs" game using JavaScript.  Create a blank page. Using a prompt box, prompt the user to supply his or her name. Then, using 5 additional prompt boxes, prompt the user to supply 5 words. Save each word in a separate variable. Then, using document.write() statements, use the information stored in variables to display a "Mad-libs" type of story, i.e. create a few paragraphs of information in story format. Also, prompt the user for a color (i.e. one of the 16 named colors or a hex value). Store this color in a variable. In the "mad libs" story, highlight, using the color supplied by the user, each of the words that you previously collected. Do this by surrounding the words with <div> tags and using an inline style.
+###### javascript
+```javascript
+var userName = prompt("Enter your name:");
+var word1 = prompt("Enter a noun:");
+var word2 = prompt("Enter an adjective:");
+var word3 = prompt("Enter another noun:");
+var word4 = prompt("Enter a verb:");
+var word5 = prompt("Enter a place:");
+
+var userColor = prompt("Choose a color (name or hex value):");
+
+document.write("<h2>Mad Libs Story</h2>");
+document.write("<p>Once upon a time, <div style='color: " + userColor + "; display: inline'>" + userName + "</div> found a magical <div style='color: " + userColor + "; display: inline'>" + word1 + "</div> in a <div style='color: " + userColor + "; display: inline'>" + word2 + "</div> forest. Excitedly, <div style='color: " + userColor + "; display: inline'>" + userName + "</div> picked up the <div style='color: " + userColor + "; display: inline'>" + word1 + "</div> and decided to take it to <div style='color: " + userColor + "; display: inline'>" + word3 + "</div>.</p>");
+document.write("<p>On the way, they encountered a friendly <div style='color: " + userColor + "; display: inline'>" + word4 + "</div> who offered to help them find their way. Together, they journeyed through the <div style='color: " + userColor + "; display: inline'>" + word5 + "</div> and finally reached their destination.</p>");
+document.write("<p>And so, <div style='color: " + userColor + "; display: inline'>" + userName + "</div> and their new <div style='color: " + userColor + "; display: inline'>" + word1 + "</div> lived happily ever after in the <div style='color: " + userColor + "; display: inline'>" + word2 + "</div> forest.</p>");
+```
